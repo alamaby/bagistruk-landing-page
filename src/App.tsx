@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import { content, meta, type Lang } from "./content";
 import {
   PhoneMockup,
@@ -23,6 +24,7 @@ import {
 } from "./components/Icons";
 import { Faq } from "./components/Faq";
 import { privacyPolicy, termsOfService, type LegalContent } from "./legalContent";
+import { trackCtaClick, type AnalyticsPage } from "./utils/analytics";
 
 const PRIVACY_URL = "/privacy";
 const TERMS_URL = "/terms";
@@ -30,6 +32,7 @@ const GITHUB_URL = "https://github.com/alamaby/bagistruk";
 const GOOGLE_PLAY_URL = "";
 const APP_STORE_URL = "";
 const CONTACT_EMAIL = "alam.aby.b@gmail.com";
+const APP_LOGO_URL = "/app-logo.png";
 
 const STORAGE_KEY = "bagistruk_lang";
 
@@ -41,7 +44,7 @@ function detectInitialLang(): Lang {
   return "en";
 }
 
-function getPage() {
+function getPage(): AnalyticsPage {
   if (typeof window === "undefined") return "home";
   const path = window.location.pathname.replace(/\/$/, "");
   if (path === "/privacy" || path === "/id/privacy") return "privacy";
@@ -128,21 +131,31 @@ export default function App() {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
+  const trackAndScroll = (id: string, eventId: string, label: string) => {
+    trackCtaClick({ id: eventId, label, lang, page, target: id });
+    scrollTo(id);
+  };
+
   if (page !== "home") {
     return (
-      <LegalPage
-        lang={lang}
-        legalContent={getLegalContent(page)}
-        onChangeLang={changeLang}
-        onNav={scrollTo}
-        t={t}
-      />
+      <>
+        <LegalPage
+          lang={lang}
+          page={page}
+          legalContent={getLegalContent(page)}
+          onChangeLang={changeLang}
+          onNav={trackAndScroll}
+          t={t}
+        />
+        <Analytics />
+      </>
     );
   }
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 antialiased">
-      <Header lang={lang} onChangeLang={changeLang} onNav={scrollTo} t={t} />
+    <>
+      <div className="min-h-screen bg-white text-slate-900 antialiased">
+      <Header lang={lang} onChangeLang={changeLang} onNav={trackAndScroll} t={t} />
 
       <main>
         {/* HERO */}
@@ -166,14 +179,16 @@ export default function App() {
 
               <div className="mt-7 flex flex-col items-stretch justify-center gap-3 sm:flex-row lg:justify-start">
                 <button
-                  onClick={() => scrollTo("workflow")}
+                  onClick={() =>
+                    trackAndScroll("workflow", "hero_workflow", t.hero.secondaryCta)
+                  }
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-teal-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500/40"
                 >
                   {t.hero.secondaryCta}
                   <ArrowRightIcon className="h-4 w-4" />
                 </button>
                 <button
-                  onClick={() => scrollTo("features")}
+                  onClick={() => trackAndScroll("features", "hero_features", t.nav.features)}
                   className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-300"
                 >
                   {t.nav.features}
@@ -297,11 +312,35 @@ export default function App() {
               ))}
             </ul>
             <div className="mt-6 flex justify-center gap-4 text-sm font-medium text-teal-700">
-              <a href={PRIVACY_URL} className="underline-offset-4 hover:underline">
+              <a
+                href={PRIVACY_URL}
+                onClick={() =>
+                  trackCtaClick({
+                    id: "trust_privacy",
+                    label: t.footer.privacy,
+                    lang,
+                    page,
+                    target: PRIVACY_URL,
+                  })
+                }
+                className="underline-offset-4 hover:underline"
+              >
                 {t.footer.privacy}
               </a>
               <span className="text-slate-300">·</span>
-              <a href={TERMS_URL} className="underline-offset-4 hover:underline">
+              <a
+                href={TERMS_URL}
+                onClick={() =>
+                  trackCtaClick({
+                    id: "trust_terms",
+                    label: t.footer.terms,
+                    lang,
+                    page,
+                    target: TERMS_URL,
+                  })
+                }
+                className="underline-offset-4 hover:underline"
+              >
                 {t.footer.terms}
               </a>
             </div>
@@ -320,9 +359,11 @@ export default function App() {
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
             <div className="sm:col-span-2 lg:col-span-2">
               <div className="flex items-center gap-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-500 text-sm font-bold text-white">
-                  B
-                </div>
+                <img
+                  src={APP_LOGO_URL}
+                  alt=""
+                  className="h-8 w-8 rounded-lg shadow-sm"
+                />
                 <span className="text-lg font-bold text-white">BagiStruk</span>
               </div>
               <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate-400">
@@ -335,17 +376,28 @@ export default function App() {
               </h3>
               <ul className="mt-3 space-y-2 text-sm">
                 <li>
-                  <button onClick={() => scrollTo("workflow")} className="hover:text-white">
+                  <button
+                    onClick={() => trackAndScroll("workflow", "footer_workflow", t.nav.workflow)}
+                    className="hover:text-white"
+                  >
                     {t.nav.workflow}
                   </button>
                 </li>
                 <li>
-                  <button onClick={() => scrollTo("screenshots")} className="hover:text-white">
+                  <button
+                    onClick={() =>
+                      trackAndScroll("screenshots", "footer_screenshots", t.nav.screenshots)
+                    }
+                    className="hover:text-white"
+                  >
                     {t.nav.screenshots}
                   </button>
                 </li>
                 <li>
-                  <button onClick={() => scrollTo("faq")} className="hover:text-white">
+                  <button
+                    onClick={() => trackAndScroll("faq", "footer_faq", t.nav.faq)}
+                    className="hover:text-white"
+                  >
                     {t.nav.faq}
                   </button>
                 </li>
@@ -357,22 +409,72 @@ export default function App() {
               </h3>
               <ul className="mt-3 space-y-2 text-sm">
                 <li>
-                  <a href={PRIVACY_URL} className="hover:text-white">
+                  <a
+                    href={PRIVACY_URL}
+                    onClick={() =>
+                      trackCtaClick({
+                        id: "footer_privacy",
+                        label: t.footer.privacy,
+                        lang,
+                        page,
+                        target: PRIVACY_URL,
+                      })
+                    }
+                    className="hover:text-white"
+                  >
                     {t.footer.privacy}
                   </a>
                 </li>
                 <li>
-                  <a href={TERMS_URL} className="hover:text-white">
+                  <a
+                    href={TERMS_URL}
+                    onClick={() =>
+                      trackCtaClick({
+                        id: "footer_terms",
+                        label: t.footer.terms,
+                        lang,
+                        page,
+                        target: TERMS_URL,
+                      })
+                    }
+                    className="hover:text-white"
+                  >
                     {t.footer.terms}
                   </a>
                 </li>
                 <li>
-                  <a href={GITHUB_URL} target="_blank" rel="noreferrer" className="hover:text-white">
+                  <a
+                    href={GITHUB_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() =>
+                      trackCtaClick({
+                        id: "footer_github",
+                        label: t.footer.github,
+                        lang,
+                        page,
+                        target: GITHUB_URL,
+                      })
+                    }
+                    className="hover:text-white"
+                  >
                     {t.footer.github}
                   </a>
                 </li>
                 <li>
-                  <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-white">
+                  <a
+                    href={`mailto:${CONTACT_EMAIL}`}
+                    onClick={() =>
+                      trackCtaClick({
+                        id: "footer_contact",
+                        label: t.footer.contact,
+                        lang,
+                        page,
+                        target: `mailto:${CONTACT_EMAIL}`,
+                      })
+                    }
+                    className="hover:text-white"
+                  >
                     {t.footer.contact}
                   </a>
                 </li>
@@ -384,10 +486,24 @@ export default function App() {
               </h3>
               <ul className="mt-3 space-y-2 text-sm">
                 <li>
-                  <StoreLink href={GOOGLE_PLAY_URL} label={t.footer.googlePlay} soon={t.footer.comingSoon} />
+                  <StoreLink
+                    href={GOOGLE_PLAY_URL}
+                    label={t.footer.googlePlay}
+                    soon={t.footer.comingSoon}
+                    eventId="footer_google_play"
+                    lang={lang}
+                    page={page}
+                  />
                 </li>
                 <li>
-                  <StoreLink href={APP_STORE_URL} label={t.footer.appStore} soon={t.footer.comingSoon} />
+                  <StoreLink
+                    href={APP_STORE_URL}
+                    label={t.footer.appStore}
+                    soon={t.footer.comingSoon}
+                    eventId="footer_app_store"
+                    lang={lang}
+                    page={page}
+                  />
                 </li>
               </ul>
             </div>
@@ -400,11 +516,27 @@ export default function App() {
           </div>
         </div>
       </footer>
-    </div>
+      </div>
+      <Analytics />
+    </>
   );
 }
 
-function StoreLink({ href, label, soon }: { href: string; label: string; soon: string }) {
+function StoreLink({
+  href,
+  label,
+  soon,
+  eventId,
+  lang,
+  page,
+}: {
+  href: string;
+  label: string;
+  soon: string;
+  eventId: string;
+  lang: Lang;
+  page: AnalyticsPage;
+}) {
   if (!href) {
     return (
       <span className="text-slate-500">
@@ -414,7 +546,13 @@ function StoreLink({ href, label, soon }: { href: string; label: string; soon: s
   }
 
   return (
-    <a href={href} target="_blank" rel="noreferrer" className="hover:text-white">
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      onClick={() => trackCtaClick({ id: eventId, label, lang, page, target: href })}
+      className="hover:text-white"
+    >
       {label}
     </a>
   );
@@ -422,15 +560,17 @@ function StoreLink({ href, label, soon }: { href: string; label: string; soon: s
 
 function LegalPage({
   lang,
+  page,
   legalContent,
   onChangeLang,
   onNav,
   t,
 }: {
   lang: Lang;
+  page: AnalyticsPage;
   legalContent: LegalContent;
   onChangeLang: (l: Lang) => void;
-  onNav: (id: string) => void;
+  onNav: (id: string, eventId: string, label: string) => void;
   t: (typeof content)[Lang];
 }) {
   const legal = legalContent[lang];
@@ -443,6 +583,15 @@ function LegalPage({
           <div className="mx-auto max-w-3xl px-5 py-14 sm:py-20">
             <a
               href={lang === "id" ? "/id" : "/"}
+              onClick={() =>
+                trackCtaClick({
+                  id: "legal_back_home",
+                  label: legal.backToHome,
+                  lang,
+                  page,
+                  target: lang === "id" ? "/id" : "/",
+                })
+              }
               className="text-sm font-semibold text-teal-700 underline-offset-4 hover:underline"
             >
               {legal.backToHome}
@@ -496,7 +645,7 @@ function Header({
 }: {
   lang: Lang;
   onChangeLang: (l: Lang) => void;
-  onNav: (id: string) => void;
+  onNav: (id: string, eventId: string, label: string) => void;
   t: (typeof content)[Lang];
 }) {
   const [scrolled, setScrolled] = useState(false);
@@ -517,22 +666,36 @@ function Header({
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3">
         <a href="/" className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-600 text-sm font-bold text-white">
-            B
-          </div>
+          <img
+            src={APP_LOGO_URL}
+            alt=""
+            className="h-8 w-8 rounded-lg shadow-sm"
+          />
           <span className="text-lg font-bold text-slate-900">BagiStruk</span>
         </a>
         <nav className="hidden items-center gap-6 text-sm font-medium text-slate-600 md:flex">
-          <button onClick={() => onNav("workflow")} className="hover:text-slate-900">
+          <button
+            onClick={() => onNav("workflow", "nav_workflow", t.nav.workflow)}
+            className="hover:text-slate-900"
+          >
             {t.nav.workflow}
           </button>
-          <button onClick={() => onNav("features")} className="hover:text-slate-900">
+          <button
+            onClick={() => onNav("features", "nav_features", t.nav.features)}
+            className="hover:text-slate-900"
+          >
             {t.nav.features}
           </button>
-          <button onClick={() => onNav("screenshots")} className="hover:text-slate-900">
+          <button
+            onClick={() => onNav("screenshots", "nav_screenshots", t.nav.screenshots)}
+            className="hover:text-slate-900"
+          >
             {t.nav.screenshots}
           </button>
-          <button onClick={() => onNav("faq")} className="hover:text-slate-900">
+          <button
+            onClick={() => onNav("faq", "nav_faq", t.nav.faq)}
+            className="hover:text-slate-900"
+          >
             {t.nav.faq}
           </button>
         </nav>

@@ -36,9 +36,7 @@ function StatusBar() {
 function AppHeader({ title }: { title: string }) {
   return (
     <div className="flex items-center gap-2 px-4 pb-3 pt-1">
-      <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-teal-600 text-[11px] font-bold text-white">
-        B
-      </div>
+      <img src="/app-logo.png" alt="" className="h-6 w-6 rounded-lg shadow-sm" />
       <span className="text-sm font-semibold text-slate-900">{title}</span>
     </div>
   );

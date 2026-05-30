@@ -103,6 +103,12 @@ export const privacyPolicy: LegalContent = {
         ],
       },
       {
+        heading: "Usage Analytics",
+        body: [
+          "We may collect lightweight, privacy-friendly usage analytics such as page views and CTA clicks to understand product interest and improve the landing page.",
+        ],
+      },
+      {
         heading: "Children",
         body: [
           "BagiStruk is not intended for children under the age required by applicable law to consent to digital services. If you believe a child has provided personal data, contact us so we can review and delete it.",
@@ -201,6 +207,12 @@ export const privacyPolicy: LegalContent = {
         heading: "Keamanan",
         body: [
           "Kami menggunakan autentikasi Supabase, row-level security, API key sisi server, dan policy database untuk melindungi data pengguna. Tidak ada sistem yang sepenuhnya aman, tetapi kami mengambil langkah wajar untuk membatasi akses dan mengurangi risiko.",
+        ],
+      },
+      {
+        heading: "Analytics Penggunaan",
+        body: [
+          "Kami dapat mengumpulkan analytics penggunaan ringan yang menjaga privasi, seperti page view dan klik CTA, untuk memahami minat produk dan meningkatkan landing page.",
         ],
       },
       {
