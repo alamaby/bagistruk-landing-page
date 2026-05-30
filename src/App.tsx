@@ -33,6 +33,8 @@ const GOOGLE_PLAY_URL = "";
 const APP_STORE_URL = "";
 const CONTACT_EMAIL = "alam.aby.b@gmail.com";
 const APP_LOGO_URL = "/app-logo.png";
+const SITE_URL = "https://bagistruk.vercel.app";
+const OG_IMAGE_URL = `${SITE_URL}/icon.png`;
 
 const STORAGE_KEY = "bagistruk_lang";
 
@@ -56,6 +58,12 @@ function getLegalContent(page: string) {
   return page === "terms" ? termsOfService : privacyPolicy;
 }
 
+function getCanonicalUrl(page: AnalyticsPage, lang: Lang) {
+  if (page === "privacy") return `${SITE_URL}${lang === "id" ? "/id/privacy" : "/privacy"}`;
+  if (page === "terms") return `${SITE_URL}${lang === "id" ? "/id/terms" : "/terms"}`;
+  return `${SITE_URL}${lang === "id" ? "/id" : "/"}`;
+}
+
 const workflowIcons = [CameraIcon, CheckListIcon, UsersIcon, WalletIcon];
 const featureIcons = [CameraIcon, EditIcon, UserPlusIcon, PieIcon, ChartIcon, ShieldIcon, GlobeIcon];
 const screenComponents = [ScanScreen, ReviewScreen, SplitScreen, SettlementScreen];
@@ -72,6 +80,7 @@ export default function App() {
       page !== "home" ? `${legalContent[lang].title} - BagiStruk` : meta[lang].title;
     const pageDescription =
       page !== "home" ? legalContent[lang].intro : meta[lang].description;
+    const canonicalUrl = getCanonicalUrl(page, lang);
     document.title = pageTitle;
 
     const setMeta = (name: string, value: string) => {
@@ -92,10 +101,25 @@ export default function App() {
       }
       el.setAttribute("content", value);
     };
+    const setLink = (rel: string, href: string) => {
+      let el = document.querySelector(`link[rel="${rel}"]`);
+      if (!el) {
+        el = document.createElement("link");
+        el.setAttribute("rel", rel);
+        document.head.appendChild(el);
+      }
+      el.setAttribute("href", href);
+    };
 
+    setLink("canonical", canonicalUrl);
     setMeta("description", pageDescription);
+    setMeta("twitter:title", pageTitle);
+    setMeta("twitter:description", pageDescription);
+    setMeta("twitter:image", OG_IMAGE_URL);
     setOg("og:title", pageTitle);
     setOg("og:description", pageDescription);
+    setOg("og:url", canonicalUrl);
+    setOg("og:image", OG_IMAGE_URL);
     setOg("og:locale", lang === "id" ? "id_ID" : "en_US");
   }, [lang, page]);
 
