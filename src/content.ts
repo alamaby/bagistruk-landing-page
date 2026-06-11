@@ -97,7 +97,7 @@ export const content = {
       secondary: [
         "History shows saved bills, outstanding totals, and settlement status. Free accounts can view the last 7 days; Plus can view the last 90 days.",
         "Settings manages scan credits, currency, language, theme, account actions, Plus access, bank transfer info, and deleted bill recovery.",
-        "Anonymous users get 5 lifetime OCR credits, Free users get 20 credits per month, and Plus users get 60 credits per month plus export and insight features.",
+        "Anonymous users get 5 lifetime OCR credits, Free users get 20 credits per month, and Plus users get 60 credits per month plus export and insight features. Anonymous and Free multi-photo scans use credits by photo count; Plus keeps long receipts to 1 credit per valid scan.",
       ],
       tipsHeading: "Scan accuracy tips",
       tips: [
@@ -250,7 +250,7 @@ export const content = {
       secondary: [
         "History menampilkan bill tersimpan, total outstanding, dan status lunas. Akun Free melihat 7 hari terakhir; Plus melihat 90 hari terakhir.",
         "Settings mengatur credit scan, currency, bahasa, tema, akun, akses Plus, info bank transfer, dan pemulihan bill terhapus.",
-        "Pengguna Anonymous mendapat 5 credit OCR lifetime, Free mendapat 20 credit per bulan, dan Plus mendapat 60 credit per bulan plus fitur export dan insight.",
+        "Pengguna Anonymous mendapat 5 credit OCR lifetime, Free mendapat 20 credit per bulan, dan Plus mendapat 60 credit per bulan plus fitur export dan insight. Scan multi-foto Anonymous dan Free memakai credit sesuai jumlah foto; Plus tetap 1 credit per scan valid untuk struk panjang.",
       ],
       tipsHeading: "Tips scan lebih akurat",
       tips: [
