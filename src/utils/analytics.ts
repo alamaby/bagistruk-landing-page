@@ -1,7 +1,7 @@
 import { track } from "@vercel/analytics";
 import type { Lang } from "../content";
 
-export type AnalyticsPage = "home" | "privacy" | "terms";
+export type AnalyticsPage = "home" | "privacy" | "terms" | "email";
 
 type CtaClickEvent = {
   id: string;

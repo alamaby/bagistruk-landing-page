@@ -24,6 +24,7 @@ import {
 } from "./components/Icons";
 import { Faq } from "./components/Faq";
 import { privacyPolicy, termsOfService, type LegalContent } from "./legalContent";
+import { findEmailCampaign, type EmailCampaign } from "./emailCampaignContent";
 import { trackCtaClick, type AnalyticsPage } from "./utils/analytics";
 
 const PRIVACY_URL = "/privacy";
@@ -51,6 +52,7 @@ function getPage(): AnalyticsPage {
   const path = window.location.pathname.replace(/\/$/, "");
   if (path === "/privacy" || path === "/id/privacy") return "privacy";
   if (path === "/terms" || path === "/id/terms") return "terms";
+  if (path.startsWith("/emails/") || path.startsWith("/id/emails/")) return "email";
   return "home";
 }
 
@@ -58,9 +60,20 @@ function getLegalContent(page: string) {
   return page === "terms" ? termsOfService : privacyPolicy;
 }
 
+function getEmailSlug() {
+  if (typeof window === "undefined") return null;
+  const path = window.location.pathname.replace(/\/$/, "");
+  const match = path.match(/^\/(?:id\/)?emails\/([^/]+)$/);
+  return match?.[1] ?? null;
+}
+
 function getCanonicalUrl(page: AnalyticsPage, lang: Lang) {
   if (page === "privacy") return `${SITE_URL}${lang === "id" ? "/id/privacy" : "/privacy"}`;
   if (page === "terms") return `${SITE_URL}${lang === "id" ? "/id/terms" : "/terms"}`;
+  if (page === "email") {
+    const slug = getEmailSlug();
+    return `${SITE_URL}${lang === "id" ? `/id/emails/${slug ?? ""}` : `/emails/${slug ?? ""}`}`;
+  }
   return `${SITE_URL}${lang === "id" ? "/id" : "/"}`;
 }
 
@@ -72,15 +85,25 @@ const screenComponents = [ScanScreen, ReviewScreen, SplitScreen, SettlementScree
 export default function App() {
   const [lang, setLang] = useState<Lang>(detectInitialLang);
   const page = getPage();
+  const emailCampaign = page === "email" ? findEmailCampaign(getEmailSlug()) : undefined;
   const t = content[lang];
 
   useEffect(() => {
     document.documentElement.lang = lang;
     const legalContent = getLegalContent(page);
+    const emailText = emailCampaign?.text[lang];
     const pageTitle =
-      page !== "home" ? `${legalContent[lang].title} - BagiStruk` : meta[lang].title;
+      page === "email"
+        ? `${emailText?.subject ?? "Email campaign"} - BagiStruk`
+        : page !== "home"
+          ? `${legalContent[lang].title} - BagiStruk`
+          : meta[lang].title;
     const pageDescription =
-      page !== "home" ? legalContent[lang].intro : meta[lang].description;
+      page === "email"
+        ? emailText?.preheader ?? "BagiStruk email campaign web version."
+        : page !== "home"
+          ? legalContent[lang].intro
+          : meta[lang].description;
     const canonicalUrl = getCanonicalUrl(page, lang);
     document.title = pageTitle;
 
@@ -114,6 +137,7 @@ export default function App() {
 
     setLink("canonical", canonicalUrl);
     setMeta("description", pageDescription);
+    setMeta("robots", page === "email" ? "noindex,nofollow" : "index,follow");
     setMeta("twitter:title", pageTitle);
     setMeta("twitter:description", pageDescription);
     setMeta("twitter:image", OG_IMAGE_URL);
@@ -122,24 +146,29 @@ export default function App() {
     setOg("og:url", canonicalUrl);
     setOg("og:image", OG_IMAGE_URL);
     setOg("og:locale", lang === "id" ? "id_ID" : "en_US");
-  }, [lang, page]);
+  }, [emailCampaign, lang, page]);
 
   const changeLang = (next: Lang) => {
     setLang(next);
     try {
       window.localStorage.setItem(STORAGE_KEY, next);
       const currentPage = getPage();
+      const emailSlug = getEmailSlug();
       const path =
         next === "id"
           ? currentPage === "privacy"
             ? "/id/privacy"
             : currentPage === "terms"
               ? "/id/terms"
+              : currentPage === "email" && emailSlug
+                ? `/id/emails/${emailSlug}`
               : "/id"
           : currentPage === "privacy"
             ? "/privacy"
             : currentPage === "terms"
               ? "/terms"
+              : currentPage === "email" && emailSlug
+                ? `/emails/${emailSlug}`
               : "/";
       const hash = window.location.hash;
       window.history.replaceState(null, "", path + hash);
@@ -150,7 +179,7 @@ export default function App() {
 
   const scrollTo = (id: string) => {
     if (page !== "home") {
-      window.location.href = `/#${id}`;
+      window.location.href = `${lang === "id" ? "/id" : "/"}#${id}`;
       return;
     }
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -160,6 +189,21 @@ export default function App() {
     trackCtaClick({ id: eventId, label, lang, page, target: id });
     scrollTo(id);
   };
+
+  if (page === "email") {
+    return (
+      <>
+        <EmailCampaignPage
+          campaign={emailCampaign}
+          lang={lang}
+          onChangeLang={changeLang}
+          onNav={trackAndScroll}
+          t={t}
+        />
+        <Analytics />
+      </>
+    );
+  }
 
   if (page !== "home") {
     return (
@@ -638,6 +682,191 @@ function StoreLink({
     >
       {label}
     </a>
+  );
+}
+
+function EmailCampaignPage({
+  campaign,
+  lang,
+  onChangeLang,
+  onNav,
+  t,
+}: {
+  campaign?: EmailCampaign;
+  lang: Lang;
+  onChangeLang: (l: Lang) => void;
+  onNav: (id: string, eventId: string, label: string) => void;
+  t: (typeof content)[Lang];
+}) {
+  const page: AnalyticsPage = "email";
+
+  if (!campaign) {
+    return (
+      <div className="min-h-screen bg-white text-slate-900 antialiased">
+        <Header lang={lang} onChangeLang={onChangeLang} onNav={onNav} t={t} />
+        <main className="mx-auto max-w-3xl px-5 py-16 sm:py-24">
+          <div className="flex items-center gap-2">
+            <img src={APP_LOGO_URL} alt="" className="h-9 w-9 rounded-lg shadow-sm" />
+            <span className="text-lg font-bold text-slate-900">BagiStruk</span>
+          </div>
+          <p className="mt-8 text-sm font-semibold uppercase tracking-wide text-teal-700">
+            Email web version
+          </p>
+          <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+            {lang === "id" ? "Campaign tidak ditemukan" : "Campaign not found"}
+          </h1>
+          <p className="mt-4 text-base leading-7 text-slate-600">
+            {lang === "id"
+              ? "Link ini mungkin sudah berubah atau belum tersedia."
+              : "This link may have changed or is not available yet."}
+          </p>
+          <a
+            href={lang === "id" ? "/id" : "/"}
+            className="mt-8 inline-flex items-center justify-center gap-2 rounded-xl bg-teal-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-700"
+          >
+            {lang === "id" ? "Kembali ke beranda" : "Back to home"}
+            <ArrowRightIcon className="h-4 w-4" />
+          </a>
+        </main>
+      </div>
+    );
+  }
+
+  const email = campaign.text[lang];
+  const homeHref = lang === "id" ? "/id" : "/";
+  const privacyHref = lang === "id" ? "/id/privacy" : "/privacy";
+  const termsHref = lang === "id" ? "/id/terms" : "/terms";
+
+  const trackEmailLink = (id: string, label: string, target: string) => {
+    trackCtaClick({
+      id: `email_${campaign.stepKey}_${id}`,
+      label,
+      lang,
+      page,
+      target,
+    });
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-50 text-slate-900 antialiased">
+      <Header lang={lang} onChangeLang={onChangeLang} onNav={onNav} t={t} />
+      <main>
+        <section className="border-b border-slate-200 bg-white">
+          <div className="mx-auto max-w-3xl px-5 py-12 sm:py-16">
+            <div className="flex items-center justify-between gap-4">
+              <a href={homeHref} className="flex items-center gap-2">
+                <img src={APP_LOGO_URL} alt="" className="h-9 w-9 rounded-lg shadow-sm" />
+                <span className="text-lg font-bold text-slate-900">BagiStruk</span>
+              </a>
+              <LangSwitcher lang={lang} onChange={onChangeLang} label={t.langLabel} />
+            </div>
+            <p className="mt-10 text-xs font-bold uppercase tracking-wide text-teal-700">
+              {lang === "id" ? "Versi web email" : "Email web version"}
+            </p>
+            <p className="mt-2 text-sm font-medium text-slate-500">{email.audience}</p>
+            <h1 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
+              {email.heading}
+            </h1>
+            <p className="mt-5 text-base leading-7 text-slate-600">{email.intro}</p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a
+                href={email.primaryCta.target}
+                onClick={() =>
+                  trackEmailLink("primary", email.primaryCta.label, email.primaryCta.target)
+                }
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-teal-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500/40"
+              >
+                {email.primaryCta.label}
+                <ArrowRightIcon className="h-4 w-4" />
+              </a>
+              {email.secondaryCta && (
+                <a
+                  href={email.secondaryCta.target}
+                  onClick={() =>
+                    trackEmailLink("secondary", email.secondaryCta!.label, email.secondaryCta!.target)
+                  }
+                  className="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-300"
+                >
+                  {email.secondaryCta.label}
+                </a>
+              )}
+            </div>
+          </div>
+        </section>
+
+        <article className="mx-auto max-w-3xl px-5 py-10 sm:py-12">
+          <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-7">
+            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+              {lang === "id" ? "Subjek email" : "Email subject"}
+            </p>
+            <p className="mt-2 text-lg font-bold text-slate-900">{email.subject}</p>
+            <p className="mt-2 text-sm leading-6 text-slate-600">{email.preheader}</p>
+          </div>
+
+          <div className="mt-8 space-y-6">
+            {email.sections.map((section, index) => (
+              <section key={`${section.heading ?? "section"}-${index}`} className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-7">
+                {section.heading && (
+                  <h2 className="text-xl font-bold tracking-tight text-slate-900">
+                    {section.heading}
+                  </h2>
+                )}
+                {section.body?.map((paragraph) => (
+                  <p key={paragraph} className="mt-3 text-sm leading-7 text-slate-600">
+                    {paragraph}
+                  </p>
+                ))}
+                {section.bullets && (
+                  <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-700">
+                    {section.bullets.map((item) => (
+                      <li key={item} className="flex gap-3">
+                        <CheckIcon className="mt-1 h-4 w-4 shrink-0 text-teal-600" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </section>
+            ))}
+          </div>
+
+          <div className="mt-8 rounded-2xl border border-teal-100 bg-teal-50 p-5 text-sm leading-6 text-slate-700">
+            <p>{email.footerNote}</p>
+            <p className="mt-3">
+              {lang === "id"
+                ? "Email marketing harus selalu menyertakan link unsubscribe di dalam email asli."
+                : "Marketing emails should always include an unsubscribe link in the original email."}
+            </p>
+          </div>
+
+          <div className="mt-8 flex flex-wrap gap-x-5 gap-y-3 text-sm font-medium text-teal-700">
+            <a
+              href={privacyHref}
+              onClick={() => trackEmailLink("privacy", t.footer.privacy, privacyHref)}
+              className="underline-offset-4 hover:underline"
+            >
+              {t.footer.privacy}
+            </a>
+            <a
+              href={termsHref}
+              onClick={() => trackEmailLink("terms", t.footer.terms, termsHref)}
+              className="underline-offset-4 hover:underline"
+            >
+              {t.footer.terms}
+            </a>
+            <a
+              href={homeHref}
+              onClick={() =>
+                trackEmailLink("home", lang === "id" ? "Beranda" : "Home", homeHref)
+              }
+              className="underline-offset-4 hover:underline"
+            >
+              {lang === "id" ? "Beranda" : "Home"}
+            </a>
+          </div>
+        </article>
+      </main>
+    </div>
   );
 }
 
