@@ -66,6 +66,7 @@ function getCanonicalUrl(page: AnalyticsPage, lang: Lang) {
 
 const workflowIcons = [CameraIcon, CheckListIcon, UsersIcon, WalletIcon];
 const featureIcons = [CameraIcon, EditIcon, UserPlusIcon, PieIcon, ChartIcon, ShieldIcon, GlobeIcon];
+const guideIcons = [CameraIcon, EditIcon, UsersIcon, WalletIcon];
 const screenComponents = [ScanScreen, ReviewScreen, SplitScreen, SettlementScreen];
 
 export default function App() {
@@ -292,6 +293,56 @@ export default function App() {
           </div>
         </Section>
 
+        {/* USER GUIDE */}
+        <Section id="guide" heading={t.guide.heading} subheading={t.guide.subheading}>
+          <div className="grid gap-4 lg:grid-cols-4">
+            {t.guide.steps.map((step, i) => {
+              const Icon = guideIcons[i] ?? CheckIcon;
+              return (
+                <article
+                  key={step.title}
+                  className="rounded-2xl border border-slate-200 bg-white p-5 transition hover:border-teal-300 hover:shadow-sm"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-50 text-teal-600">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <span className="text-xs font-bold uppercase tracking-wide text-teal-600">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <h3 className="mt-4 text-base font-semibold text-slate-900">{step.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{step.desc}</p>
+                </article>
+              );
+            })}
+          </div>
+
+          <div className="mt-8 grid gap-4 lg:grid-cols-[1.5fr_1fr]">
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+              <ul className="space-y-3 text-sm leading-6 text-slate-700">
+                {t.guide.secondary.map((item) => (
+                  <li key={item} className="flex gap-3">
+                    <CheckIcon className="mt-1 h-4 w-4 shrink-0 text-teal-600" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="rounded-2xl border border-teal-100 bg-teal-50 p-5">
+              <h3 className="text-base font-semibold text-slate-900">{t.guide.tipsHeading}</h3>
+              <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-700">
+                {t.guide.tips.map((tip) => (
+                  <li key={tip} className="flex gap-3">
+                    <CheckIcon className="mt-1 h-4 w-4 shrink-0 text-teal-600" />
+                    <span>{tip}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </Section>
+
         {/* SCREENSHOTS */}
         <Section
           id="screenshots"
@@ -415,6 +466,14 @@ export default function App() {
                     className="hover:text-white"
                   >
                     {t.nav.screenshots}
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => trackAndScroll("guide", "footer_guide", t.nav.guide)}
+                    className="hover:text-white"
+                  >
+                    {t.nav.guide}
                   </button>
                 </li>
                 <li>
@@ -709,6 +768,12 @@ function Header({
             className="hover:text-slate-900"
           >
             {t.nav.features}
+          </button>
+          <button
+            onClick={() => onNav("guide", "nav_guide", t.nav.guide)}
+            className="hover:text-slate-900"
+          >
+            {t.nav.guide}
           </button>
           <button
             onClick={() => onNav("screenshots", "nav_screenshots", t.nav.screenshots)}

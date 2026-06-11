@@ -18,6 +18,7 @@ export const content = {
     nav: {
       workflow: "How it works",
       features: "Features",
+      guide: "User guide",
       screenshots: "Screenshots",
       faq: "FAQ",
       cta: "Join waitlist",
@@ -69,6 +70,40 @@ export const content = {
         { title: "Settlement tracking", desc: "Keep track of who has paid and who hasn't." },
         { title: "Anonymous-first", desc: "Start without an account, upgrade anytime to keep history." },
         { title: "Bilingual UI", desc: "Use BagiStruk in English or Bahasa Indonesia." },
+      ],
+    },
+    guide: {
+      heading: "User guide",
+      subheading:
+        "A practical walkthrough from scanning a receipt to closing out payments.",
+      steps: [
+        {
+          title: "Scan receipts",
+          desc: "Add photos from the camera or gallery. Long receipts can use multiple photos, and scan credits are checked before processing.",
+        },
+        {
+          title: "Review before saving",
+          desc: "Check merchant, date, currency, items, tax, service, and total. Fix OCR mistakes before the bill is saved.",
+        },
+        {
+          title: "Split with participants",
+          desc: "Add participants, choose an active participant, then tap the items that belong to them until every item is assigned.",
+        },
+        {
+          title: "Settle and share",
+          desc: "Share each participant's amount, mark payments as paid, and let the bill become settled automatically when everyone has paid.",
+        },
+      ],
+      secondary: [
+        "History shows saved bills, outstanding totals, and settlement status. Free accounts can view the last 7 days; Plus can view the last 90 days.",
+        "Settings manages scan credits, currency, language, theme, account actions, Plus access, bank transfer info, and deleted bill recovery.",
+        "Anonymous users get 5 lifetime OCR credits, Free users get 20 credits per month, and Plus users get 60 credits per month plus export and insight features.",
+      ],
+      tipsHeading: "Scan accuracy tips",
+      tips: [
+        "Use bright, clear photos and avoid shadows over totals or item lists.",
+        "Capture multiple photos for long receipts.",
+        "Always review every number before tapping save.",
       ],
     },
     screenshots: {
@@ -136,6 +171,7 @@ export const content = {
     nav: {
       workflow: "Cara kerja",
       features: "Fitur",
+      guide: "Panduan",
       screenshots: "Screenshot",
       faq: "FAQ",
       cta: "Gabung waitlist",
@@ -187,6 +223,40 @@ export const content = {
         { title: "Pantau pelunasan", desc: "Lacak siapa yang sudah dan belum bayar." },
         { title: "Bisa tanpa akun", desc: "Mulai tanpa akun, buat akun kapan saja untuk simpan riwayat." },
         { title: "UI dwibahasa", desc: "Gunakan BagiStruk dalam Bahasa Indonesia atau Inggris." },
+      ],
+    },
+    guide: {
+      heading: "Panduan pengguna",
+      subheading:
+        "Ringkasan praktis dari scan struk sampai tagihan selesai dibayar.",
+      steps: [
+        {
+          title: "Scan struk",
+          desc: "Tambahkan foto dari kamera atau galeri. Struk panjang bisa memakai beberapa foto, dan credit scan dicek sebelum diproses.",
+        },
+        {
+          title: "Review sebelum simpan",
+          desc: "Cek merchant, tanggal, currency, item, pajak, service, dan total. Perbaiki hasil OCR sebelum bill disimpan.",
+        },
+        {
+          title: "Bagi ke partisipan",
+          desc: "Tambahkan partisipan, pilih partisipan aktif, lalu tap item yang menjadi bagiannya sampai semua item terbagi.",
+        },
+        {
+          title: "Lunasi dan bagikan",
+          desc: "Bagikan nominal tiap partisipan, tandai pembayaran, dan bill otomatis lunas ketika semua partisipan sudah membayar.",
+        },
+      ],
+      secondary: [
+        "History menampilkan bill tersimpan, total outstanding, dan status lunas. Akun Free melihat 7 hari terakhir; Plus melihat 90 hari terakhir.",
+        "Settings mengatur credit scan, currency, bahasa, tema, akun, akses Plus, info bank transfer, dan pemulihan bill terhapus.",
+        "Pengguna Anonymous mendapat 5 credit OCR lifetime, Free mendapat 20 credit per bulan, dan Plus mendapat 60 credit per bulan plus fitur export dan insight.",
+      ],
+      tipsHeading: "Tips scan lebih akurat",
+      tips: [
+        "Gunakan foto terang dan jelas, tanpa bayangan di area total atau daftar item.",
+        "Ambil beberapa foto untuk struk panjang.",
+        "Selalu cek semua angka sebelum menekan simpan.",
       ],
     },
     screenshots: {

@@ -22,7 +22,7 @@ export const privacyPolicy: LegalContent = {
   en: {
     title: "Privacy Policy",
     effectiveDateLabel: "Effective date",
-    effectiveDate: "2026-05-23",
+    effectiveDate: "2026-06-11",
     intro:
       "This policy explains how BagiStruk collects, uses, stores, and deletes data. This document is provided for product transparency and should be reviewed for legal compliance before publication.",
     backToHome: "Back to home",
@@ -30,7 +30,7 @@ export const privacyPolicy: LegalContent = {
       {
         heading: "Summary",
         body: [
-          "BagiStruk is a split-bill app that helps users scan receipts, extract bill items with OCR, and divide payments among participants. We collect only the data needed to provide these features. We do not sell personal data and we do not use advertising SDKs.",
+          "BagiStruk is a split-bill app that helps users scan receipts, extract bill items with OCR, and divide payments among participants. We collect only the data needed to provide these features. We do not sell personal data. If ads are enabled, we use Google Mobile Ads / AdMob to show ads and measure ad performance.",
         ],
       },
       {
@@ -42,9 +42,13 @@ export const privacyPolicy: LegalContent = {
           "Profile preferences: display name, default currency, language preference, and theme preference.",
           "App activity metadata: last_active_at, used to understand when an account was last active and to support inactivity cleanup.",
           "Receipt photos: images you choose or capture for OCR processing.",
-          "Bill data: merchant names, receipt dates, items, quantities, prices, taxes, service charges, participants, split assignments, and settlement status.",
+          "Bill data: merchant names, receipt dates, items, quantities, prices, taxes, service charges, participants, split assignments, settlement status, deleted-bill recovery metadata, exports generated on device, and optional transfer bank information used in settlement messages.",
+          "OCR credit data: plan/entitlement status, Plus trial start/end/consumption metadata, monthly credit grants, credit usage, and audit records needed to enforce scan limits and feature access.",
+          "Google Play Billing data when purchases are available: product IDs, purchase tokens, order IDs, subscription status/expiry, and verification responses needed to grant Plus access or OCR credit packs.",
           "Support and reminder data: email address and inactivity reminder timestamps when reminders are sent.",
-          "Basic technical data sent by app/framework/network services, such as device and request metadata needed for diagnostics and security.",
+          "Operational alert data: limited diagnostic details such as request ID, user ID, OCR provider, model, currency, hint, error status, and error message may be sent to the operator by email when OCR provider configuration, quota, or service issues need attention.",
+          "Basic technical data sent by app/framework/network services, such as device and request metadata needed for diagnostics and security. For anonymous anti-abuse, we may store a server-side HMAC hash derived from coarse request signals; we do not store the raw IP address or raw device fingerprint for this purpose.",
+          "Advertising data when ads are enabled: advertising identifiers such as the Android Advertising ID, device/ad interaction data, approximate location inferred by ad services, and consent status used by Google Mobile Ads / AdMob for ad delivery, frequency capping, fraud prevention, and measurement.",
         ],
       },
       {
@@ -60,18 +64,22 @@ export const privacyPolicy: LegalContent = {
         bullets: [
           "To authenticate users and keep sessions active.",
           "To process receipt photos and extract bill information.",
-          "To save, display, edit, split, and settle bills.",
+          "To save, display, edit, split, settle, share, export, delete, and restore bills when the feature is available.",
           "To preserve anonymous data when a user upgrades to a registered account.",
+          "To enforce OCR credit limits and feature access, including anonymous, Free, Plus, history windows, export access, deleted-bill recovery, per-bill currency override, transfer bank information, and monthly insights.",
+          "To grant and enforce one-time Plus trials for eligible registered users, including recording when a trial starts, ends, and has been consumed.",
+          "To verify Google Play purchases server-side and grant Plus subscriptions or one-time OCR credit packs.",
           "To store user preferences and personalize the app.",
           "To track last activity for account retention and cleanup.",
           "To send inactivity reminders to registered users before account cleanup.",
+          "To show ads, measure ad performance, prevent ad fraud, and respect consent choices when ads are enabled.",
           "To diagnose errors, prevent abuse, and enforce database rate limits.",
         ],
       },
       {
         heading: "Storage And Processing",
         body: [
-          "App data is stored in Supabase, including authentication data and PostgreSQL database records. Receipt images are processed by Supabase Edge Functions. OCR processing may call third-party AI/OCR providers such as Google Gemini and OpenRouter. API keys for those providers are stored server-side and are not bundled into the mobile app.",
+          "App data is stored in Supabase, including authentication data and PostgreSQL database records. Receipt images are processed by Supabase Edge Functions. OCR processing may call third-party AI/OCR providers such as Google Gemini, OpenRouter, and Nvidia NIM. API keys for those providers are stored server-side and are not bundled into the mobile app.",
         ],
       },
       {
@@ -80,20 +88,24 @@ export const privacyPolicy: LegalContent = {
         bullets: [
           "Supabase: authentication, database, row-level security, Edge Functions, and scheduled cleanup.",
           "Google Sign-In: optional account login.",
-          "Google Gemini and/or OpenRouter: OCR and receipt parsing.",
-          "Resend or another email provider: inactivity reminder emails, if configured.",
-          "We do not use third-party advertising SDKs.",
+          "Google Gemini, OpenRouter, and/or Nvidia NIM: OCR and receipt parsing.",
+          "Resend or another email provider: inactivity reminder emails and operational OCR provider alerts, if configured.",
+          "Google Mobile Ads / AdMob: optional ad delivery, ad measurement, fraud prevention, and consent/privacy messaging.",
+          "Google Play Billing / Google Play Developer API: purchase processing and server-side purchase verification for subscriptions and one-time OCR credit packs.",
         ],
       },
       {
         heading: "Account Retention And Deletion",
         bullets: [
           "Anonymous users may be deleted after 30 days of inactivity.",
-          "Registered users may receive an inactivity reminder after 6 months of inactivity.",
-          "If a registered user remains inactive for 30 days after the reminder, the account may be deleted.",
+          "Registered Free users may receive an inactivity reminder after 6 months of inactivity.",
+          "If a registered Free user remains inactive for 30 days after the reminder, the account may be deleted.",
+          "Registered users with an active Plus entitlement are excluded from inactivity cleanup while the entitlement remains active.",
+          "When Plus entitlement ends, the inactivity window for cleanup is counted from the later of the user's last app activity and the latest Plus entitlement end time.",
           "When an inactive user is deleted, bills owned by that user are deleted first, then the authentication user is deleted.",
           "If a user opens the app after receiving a reminder, the pending deletion state is reset.",
-          "You may request account and data deletion by contacting us at alam.aby.b@gmail.com.",
+          "You can delete your account and associated app data from Profile & Settings > Delete Account in the app.",
+          "You may also request account and data deletion by contacting us at alam.aby.b@gmail.com or through the public privacy page.",
         ],
       },
       {
@@ -129,7 +141,7 @@ export const privacyPolicy: LegalContent = {
   id: {
     title: "Kebijakan Privasi",
     effectiveDateLabel: "Tanggal berlaku",
-    effectiveDate: "2026-05-23",
+    effectiveDate: "2026-06-11",
     intro:
       "Kebijakan ini menjelaskan bagaimana BagiStruk mengumpulkan, menggunakan, menyimpan, dan menghapus data. Dokumen ini disediakan untuk transparansi produk dan sebaiknya ditinjau kembali untuk kepatuhan hukum sebelum dipublikasikan.",
     backToHome: "Kembali ke beranda",
@@ -137,7 +149,7 @@ export const privacyPolicy: LegalContent = {
       {
         heading: "Ringkasan",
         body: [
-          "BagiStruk adalah aplikasi pembagi tagihan yang membantu pengguna memindai struk, mengekstrak item tagihan dengan OCR, dan membagi pembayaran antar peserta. Kami hanya mengumpulkan data yang diperlukan agar fitur aplikasi berjalan. Kami tidak menjual data pribadi dan tidak menggunakan SDK iklan.",
+          "BagiStruk adalah aplikasi pembagi tagihan yang membantu pengguna memindai struk, mengekstrak item tagihan dengan OCR, dan membagi pembayaran antar peserta. Kami hanya mengumpulkan data yang diperlukan agar fitur aplikasi berjalan. Kami tidak menjual data pribadi. Jika iklan diaktifkan, kami memakai Google Mobile Ads / AdMob untuk menampilkan iklan dan mengukur performa iklan.",
         ],
       },
       {
@@ -149,9 +161,13 @@ export const privacyPolicy: LegalContent = {
           "Preferensi profil: nama tampilan, mata uang default, bahasa, dan tema.",
           "Metadata aktivitas aplikasi: last_active_at, digunakan untuk mengetahui kapan akun terakhir aktif dan mendukung pembersihan akun tidak aktif.",
           "Foto struk: gambar yang Anda pilih atau ambil untuk pemrosesan OCR.",
-          "Data tagihan: nama merchant, tanggal struk, item, jumlah, harga, pajak, service, peserta, pembagian item, dan status pembayaran.",
+          "Data tagihan: nama merchant, tanggal struk, item, jumlah, harga, pajak, service, peserta, pembagian item, status pembayaran, metadata pemulihan bill terhapus, export yang dibuat di perangkat, dan info bank transfer opsional untuk pesan settlement.",
+          "Data credit OCR: status plan/entitlement, metadata mulai/akhir/pemakaian trial Plus, grant credit bulanan, penggunaan credit, dan audit yang dibutuhkan untuk menerapkan batas scan dan akses fitur.",
+          "Data Google Play Billing saat pembelian tersedia: product ID, purchase token, order ID, status/expiry subscription, dan respons verifikasi yang dibutuhkan untuk memberi akses Plus atau paket credit OCR.",
           "Data dukungan dan reminder: alamat email dan timestamp reminder tidak aktif saat reminder dikirim.",
-          "Data teknis dasar dari app/framework/network service, seperti metadata perangkat dan request yang dibutuhkan untuk diagnostik dan keamanan.",
+          "Data alert operasional: detail diagnostik terbatas seperti request ID, user ID, penyedia OCR, model, currency, hint, status error, dan pesan error dapat dikirim ke operator melalui email saat masalah konfigurasi, quota, atau layanan penyedia OCR perlu ditangani.",
+          "Data teknis dasar dari app/framework/network service, seperti metadata perangkat dan request yang dibutuhkan untuk diagnostik dan keamanan. Untuk anti-abuse pengguna anonim, kami dapat menyimpan hash HMAC sisi server yang diturunkan dari sinyal request terbatas; kami tidak menyimpan alamat IP mentah atau fingerprint perangkat mentah untuk tujuan ini.",
+          "Data iklan saat iklan diaktifkan: identifier iklan seperti Android Advertising ID, data perangkat/interaksi iklan, perkiraan lokasi yang disimpulkan layanan iklan, dan status consent yang digunakan Google Mobile Ads / AdMob untuk penayangan iklan, pembatasan frekuensi, pencegahan fraud, dan pengukuran.",
         ],
       },
       {
@@ -167,18 +183,22 @@ export const privacyPolicy: LegalContent = {
         bullets: [
           "Mengautentikasi pengguna dan menjaga sesi tetap aktif.",
           "Memproses foto struk dan mengekstrak informasi tagihan.",
-          "Menyimpan, menampilkan, mengedit, membagi, dan menyelesaikan tagihan.",
+          "Menyimpan, menampilkan, mengedit, membagi, menyelesaikan, membagikan, mengekspor, menghapus, dan memulihkan tagihan saat fitur tersedia.",
           "Mempertahankan data anonim saat pengguna upgrade ke akun terdaftar.",
+          "Menerapkan batas credit OCR dan akses fitur, termasuk batas pengguna anonim, Free, Plus, jendela History, akses export, pemulihan bill terhapus, penggantian currency per bill, info bank transfer, dan insight bulanan.",
+          "Memberikan dan menerapkan trial Plus satu kali untuk pengguna terdaftar yang memenuhi syarat, termasuk mencatat kapan trial mulai, berakhir, dan sudah digunakan.",
+          "Memverifikasi pembelian Google Play dari sisi server dan memberi subscription Plus atau paket credit OCR sekali beli.",
           "Menyimpan preferensi pengguna dan menyesuaikan pengalaman aplikasi.",
           "Melacak aktivitas terakhir untuk retensi dan pembersihan akun.",
           "Mengirim reminder tidak aktif kepada pengguna terdaftar sebelum pembersihan akun.",
+          "Menampilkan iklan, mengukur performa iklan, mencegah fraud iklan, dan menghormati pilihan consent saat iklan diaktifkan.",
           "Mendiagnosis error, mencegah penyalahgunaan, dan menerapkan rate limit database.",
         ],
       },
       {
         heading: "Penyimpanan Dan Pemrosesan",
         body: [
-          "Data aplikasi disimpan di Supabase, termasuk data autentikasi dan record database PostgreSQL. Foto struk diproses oleh Supabase Edge Functions. Pemrosesan OCR dapat memanggil penyedia AI/OCR pihak ketiga seperti Google Gemini dan OpenRouter. API key untuk layanan tersebut disimpan di sisi server dan tidak dibundel ke aplikasi mobile.",
+          "Data aplikasi disimpan di Supabase, termasuk data autentikasi dan record database PostgreSQL. Foto struk diproses oleh Supabase Edge Functions. Pemrosesan OCR dapat memanggil penyedia AI/OCR pihak ketiga seperti Google Gemini, OpenRouter, dan Nvidia NIM. API key untuk layanan tersebut disimpan di sisi server dan tidak dibundel ke aplikasi mobile.",
         ],
       },
       {
@@ -187,20 +207,24 @@ export const privacyPolicy: LegalContent = {
         bullets: [
           "Supabase: autentikasi, database, row-level security, Edge Functions, dan scheduled cleanup.",
           "Google Sign-In: login akun opsional.",
-          "Google Gemini dan/atau OpenRouter: OCR dan parsing struk.",
-          "Resend atau penyedia email lain: email reminder tidak aktif, jika dikonfigurasi.",
-          "Kami tidak menggunakan SDK iklan pihak ketiga.",
+          "Google Gemini, OpenRouter, dan/atau Nvidia NIM: OCR dan parsing struk.",
+          "Resend atau penyedia email lain: email reminder tidak aktif dan alert operasional penyedia OCR, jika dikonfigurasi.",
+          "Google Mobile Ads / AdMob: penayangan iklan opsional, pengukuran iklan, pencegahan fraud, dan pesan consent/privasi.",
+          "Google Play Billing / Google Play Developer API: pemrosesan pembelian dan verifikasi pembelian sisi server untuk subscription dan paket credit OCR sekali beli.",
         ],
       },
       {
         heading: "Retensi Dan Penghapusan Akun",
         bullets: [
           "Pengguna anonim dapat dihapus setelah 30 hari tidak aktif.",
-          "Pengguna terdaftar dapat menerima reminder setelah 6 bulan tidak aktif.",
-          "Jika pengguna terdaftar tetap tidak aktif selama 30 hari setelah reminder, akun dapat dihapus.",
+          "Pengguna terdaftar Free dapat menerima reminder setelah 6 bulan tidak aktif.",
+          "Jika pengguna terdaftar Free tetap tidak aktif selama 30 hari setelah reminder, akun dapat dihapus.",
+          "Pengguna terdaftar dengan entitlement Plus aktif dikecualikan dari pembersihan akun tidak aktif selama entitlement tersebut masih aktif.",
+          "Setelah entitlement Plus berakhir, jendela tidak aktif untuk cleanup dihitung dari waktu yang lebih baru antara aktivitas terakhir pengguna dan waktu entitlement Plus terakhir berakhir.",
           "Saat pengguna tidak aktif dihapus, bill milik pengguna dihapus terlebih dahulu, lalu user autentikasi dihapus.",
           "Jika pengguna membuka aplikasi setelah menerima reminder, jadwal penghapusan akan direset.",
-          "Anda dapat meminta penghapusan akun dan data dengan menghubungi alam.aby.b@gmail.com.",
+          "Anda dapat menghapus akun dan data aplikasi terkait dari Profil & Pengaturan > Hapus Akun di dalam aplikasi.",
+          "Anda juga dapat meminta penghapusan akun dan data dengan menghubungi alam.aby.b@gmail.com atau melalui halaman privacy publik.",
         ],
       },
       {
@@ -239,7 +263,7 @@ export const termsOfService: LegalContent = {
   en: {
     title: "Terms of Service",
     effectiveDateLabel: "Effective date",
-    effectiveDate: "2026-05-23",
+    effectiveDate: "2026-06-11",
     intro:
       "These Terms explain the basic rules for using BagiStruk. This document is provided for product transparency and should be reviewed for legal compliance before publication.",
     backToHome: "Back to home",
@@ -261,6 +285,8 @@ export const termsOfService: LegalContent = {
         body: [
           "You may use some features with an anonymous session. You may also register or sign in using email/password or Google Sign-In. You are responsible for keeping your device and account access secure.",
           "Anonymous accounts are intended for temporary or lightweight use. Registered accounts allow data to persist across devices and sessions, depending on the authentication provider and backend availability.",
+          "OCR scanning and selected features may be limited by credits or plan entitlements. Anonymous users receive a limited lifetime credit allowance, free registered users may receive a monthly credit allowance, and Plus users may receive higher limits and additional features such as longer history access, monthly insights, PDF/CSV export, per-bill currency override, transfer bank information in settlement messages, deleted-bill recovery, and an ad-free experience when ads are enabled. Eligible registered users may receive a one-time Plus trial. When the trial ends, access returns to the Free plan unless a paid Plus subscription is active. Unused monthly credits may expire at the end of the applicable period.",
+          "Paid subscriptions and one-time OCR credit packs, when available, are processed through Google Play Billing on Android. Subscription access continues while Google Play reports the subscription as active. One-time OCR credit packs are added to your account after server-side purchase verification. Refunds, cancellations, renewal timing, grace periods, and payment issues may affect access or available credits according to Google Play policies and the app's server-side entitlement records.",
         ],
       },
       {
@@ -290,14 +316,14 @@ export const termsOfService: LegalContent = {
       {
         heading: "7. Data Retention And Inactive Accounts",
         body: [
-          "Anonymous accounts may be deleted after 30 days of inactivity. Registered accounts may receive an inactivity reminder after 6 months of inactivity. If there is no activity within 30 days after the reminder, the account and associated app data may be deleted.",
+          "Anonymous accounts may be deleted after 30 days of inactivity. Registered Free accounts may receive an inactivity reminder after 6 months of inactivity. If there is no activity within 30 days after the reminder, the account and associated app data may be deleted. Registered accounts with an active Plus entitlement are excluded from inactivity cleanup while the entitlement remains active. When Plus entitlement ends, the inactivity window for cleanup is counted from the later of the user's last app activity and the latest Plus entitlement end time.",
           "Opening the app after receiving a reminder resets the pending inactivity deletion state.",
         ],
       },
       {
         heading: "8. Third-Party Services",
         body: [
-          "BagiStruk depends on third-party services such as Supabase, Google Sign-In, OCR providers, and email providers. Their availability, policies, and behavior may affect the app. We are not responsible for outages or changes made by third-party providers.",
+          "BagiStruk depends on third-party services such as Supabase, Google Sign-In, OCR providers, Google Mobile Ads / AdMob if ads are enabled, Google Play Billing when purchases are available, and email providers for transactional reminders or operational alerts. Their availability, policies, and behavior may affect the app. We are not responsible for outages or changes made by third-party providers.",
         ],
       },
       {
@@ -315,7 +341,7 @@ export const termsOfService: LegalContent = {
       {
         heading: "11. Termination",
         body: [
-          "We may suspend or delete accounts or data when required by law, for security reasons, for abuse prevention, or according to the inactivity policy. You may request account deletion by contacting us.",
+          "We may suspend or delete accounts or data when required by law, for security reasons, for abuse prevention, or according to the inactivity policy. You may delete your account from Profile & Settings in the app or request account deletion by contacting us.",
         ],
       },
       {
@@ -345,7 +371,7 @@ export const termsOfService: LegalContent = {
   id: {
     title: "Syarat dan Ketentuan",
     effectiveDateLabel: "Tanggal berlaku",
-    effectiveDate: "2026-05-23",
+    effectiveDate: "2026-06-11",
     intro:
       "Syarat ini menjelaskan aturan dasar penggunaan BagiStruk. Dokumen ini disediakan untuk transparansi produk dan sebaiknya ditinjau kembali untuk kepatuhan hukum sebelum dipublikasikan.",
     backToHome: "Kembali ke beranda",
@@ -367,6 +393,8 @@ export const termsOfService: LegalContent = {
         body: [
           "Sebagian fitur dapat digunakan dengan sesi anonim. Anda juga dapat mendaftar atau login menggunakan email/password atau Google Sign-In. Anda bertanggung jawab menjaga keamanan perangkat dan akses akun.",
           "Akun anonim ditujukan untuk penggunaan sementara atau ringan. Akun terdaftar memungkinkan data bertahan lintas perangkat dan sesi, tergantung penyedia autentikasi dan ketersediaan backend.",
+          "Scan OCR dan fitur tertentu dapat dibatasi oleh credit atau entitlement plan. Pengguna anonim mendapat batas credit lifetime terbatas, pengguna terdaftar Free dapat mendapat credit bulanan, dan pengguna Plus dapat mendapat batas lebih tinggi serta fitur tambahan seperti akses History lebih panjang, insight bulanan, export PDF/CSV, penggantian currency per bill, info bank transfer di pesan settlement, pemulihan bill terhapus, dan pengalaman tanpa iklan saat iklan diaktifkan. Pengguna terdaftar yang memenuhi syarat dapat menerima trial Plus satu kali. Setelah trial berakhir, akses kembali ke plan Free kecuali subscription Plus berbayar aktif. Credit bulanan yang tidak digunakan dapat hangus pada akhir periode yang berlaku.",
+          "Subscription berbayar dan paket credit OCR sekali beli, jika tersedia, diproses melalui Google Play Billing di Android. Akses subscription berlaku selama Google Play melaporkan subscription masih aktif. Paket credit OCR sekali beli ditambahkan ke akun setelah verifikasi pembelian sisi server. Refund, pembatalan, waktu renewal, grace period, dan masalah pembayaran dapat memengaruhi akses atau credit yang tersedia sesuai kebijakan Google Play dan catatan entitlement server-side aplikasi.",
         ],
       },
       {
@@ -396,14 +424,14 @@ export const termsOfService: LegalContent = {
       {
         heading: "7. Retensi Data Dan Akun Tidak Aktif",
         body: [
-          "Akun anonim dapat dihapus setelah 30 hari tidak aktif. Akun terdaftar dapat menerima reminder setelah 6 bulan tidak aktif. Jika tidak ada aktivitas dalam 30 hari setelah reminder, akun dan data aplikasi terkait dapat dihapus.",
+          "Akun anonim dapat dihapus setelah 30 hari tidak aktif. Akun terdaftar Free dapat menerima reminder setelah 6 bulan tidak aktif. Jika tidak ada aktivitas dalam 30 hari setelah reminder, akun dan data aplikasi terkait dapat dihapus. Akun terdaftar dengan entitlement Plus aktif dikecualikan dari pembersihan akun tidak aktif selama entitlement tersebut masih aktif. Setelah entitlement Plus berakhir, jendela tidak aktif untuk cleanup dihitung dari waktu yang lebih baru antara aktivitas terakhir pengguna dan waktu entitlement Plus terakhir berakhir.",
           "Membuka aplikasi setelah menerima reminder akan mereset status penghapusan tidak aktif yang tertunda.",
         ],
       },
       {
         heading: "8. Layanan Pihak Ketiga",
         body: [
-          "BagiStruk bergantung pada layanan pihak ketiga seperti Supabase, Google Sign-In, penyedia OCR, dan penyedia email. Ketersediaan, kebijakan, dan perilaku layanan tersebut dapat memengaruhi aplikasi. Kami tidak bertanggung jawab atas gangguan atau perubahan dari penyedia pihak ketiga.",
+          "BagiStruk bergantung pada layanan pihak ketiga seperti Supabase, Google Sign-In, penyedia OCR, Google Mobile Ads / AdMob jika iklan diaktifkan, Google Play Billing saat pembelian tersedia, dan penyedia email untuk reminder transaksional atau alert operasional. Ketersediaan, kebijakan, dan perilaku layanan tersebut dapat memengaruhi aplikasi. Kami tidak bertanggung jawab atas gangguan atau perubahan dari penyedia pihak ketiga.",
         ],
       },
       {
@@ -421,7 +449,7 @@ export const termsOfService: LegalContent = {
       {
         heading: "11. Pengakhiran",
         body: [
-          "Kami dapat menangguhkan atau menghapus akun atau data jika diwajibkan hukum, untuk alasan keamanan, pencegahan penyalahgunaan, atau sesuai kebijakan akun tidak aktif. Anda dapat meminta penghapusan akun dengan menghubungi kami.",
+          "Kami dapat menangguhkan atau menghapus akun atau data jika diwajibkan hukum, untuk alasan keamanan, pencegahan penyalahgunaan, atau sesuai kebijakan akun tidak aktif. Anda dapat menghapus akun dari Profil & Pengaturan di aplikasi atau meminta penghapusan akun dengan menghubungi kami.",
         ],
       },
       {
