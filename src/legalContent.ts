@@ -22,7 +22,7 @@ export const privacyPolicy: LegalContent = {
   en: {
     title: "Privacy Policy",
     effectiveDateLabel: "Effective date",
-    effectiveDate: "2026-06-11",
+    effectiveDate: "2026-06-15",
     intro:
       "This policy explains how BagiStruk collects, uses, stores, and deletes data. This document is provided for product transparency and should be reviewed for legal compliance before publication.",
     backToHome: "Back to home",
@@ -31,6 +31,22 @@ export const privacyPolicy: LegalContent = {
         heading: "Summary",
         body: [
           "BagiStruk is a split-bill app that helps users scan receipts, extract bill items with OCR, and divide payments among participants. We collect only the data needed to provide these features. We do not sell personal data. If ads are enabled, we use Google Mobile Ads / AdMob to show ads and measure ad performance.",
+        ],
+      },
+      {
+        heading: "Who We Are",
+        body: [
+          "The data controller for BagiStruk is:",
+          "",
+          "Alam Aby Bashit",
+          "Komplek Kamarasan Residence A3/2 Kelurahan Buahbatu Kecamatan Bojongsoang",
+          "Bandung, 40287",
+          "Indonesia",
+          "Email: alam.aby.b@gmail.com",
+          "",
+          "If you are in the European Economic Area, the address above also serves as our contact for the purposes of GDPR Art. 27 when you cannot reach us by email. You can always contact us at the email above regardless of your location.",
+          "",
+          "For Indonesian users, you may lodge a complaint with the Ministry of Communication and Information Technology (KOMINFO) or with the Personal Data Protection Authority (Otoritas Pelindungan Data Pribadi, OPDP) once it becomes operational. The list of EEA supervisory authorities is available at https://edpb.europa.eu/about-edpb/about-edpb/members_en.",
         ],
       },
       {
@@ -77,9 +93,36 @@ export const privacyPolicy: LegalContent = {
         ],
       },
       {
+        heading: "Legal Basis For Processing",
+        body: [
+          "We process your personal data on the following legal bases, in line with Article 6 of the EU General Data Protection Regulation (GDPR) and equivalent provisions of the Indonesian Personal Data Protection Law (UU No. 27/2022, \"UU PDP\"):",
+          "",
+          "Account data, authentication, and bill data — to perform the contract you entered with us by creating an account (Art. 6(1)(b) GDPR / Pasal 23 UU PDP).",
+          "Receipt photos and OCR processing — with your explicit consent each time you submit a scan (Art. 6(1)(a) GDPR). Scans submitted before withdrawal of consent will have been processed.",
+          "Marketing emails and promotional communications — with your prior opt-in consent only (Art. 6(1)(a) GDPR / Pasal 23 UU PDP). You can withdraw this consent at any time from Profile & Settings, or via the unsubscribe link in any marketing email we send.",
+          "Personalized advertising — with your consent given through Google's User Messaging Platform (UMP) when required by applicable law (Art. 6(1)(a) GDPR / ePrivacy Directive). We do not personalize ads for users who do not give consent.",
+          "Basic technical, security, and anti-abuse data — on the basis of our legitimate interest in keeping the service secure and preventing abuse (Art. 6(1)(f) GDPR).",
+          "Inactivity reminders and account cleanup notifications — on the basis of our legitimate interest in keeping account records accurate (Art. 6(1)(f) GDPR).",
+          "Operational alerts about OCR provider issues — on the basis of our legitimate interest in operating a reliable service (Art. 6(1)(f) GDPR).",
+        ],
+      },
+      {
         heading: "Storage And Processing",
         body: [
           "App data is stored in Supabase, including authentication data and PostgreSQL database records. Receipt images are processed by Supabase Edge Functions. OCR processing may call third-party AI/OCR providers such as Google Gemini, OpenRouter, and Nvidia NIM. API keys for those providers are stored server-side and are not bundled into the mobile app.",
+        ],
+      },
+      {
+        heading: "International Data Transfers",
+        body: [
+          "Your data may be transferred to and processed in countries other than your country of residence. The main destinations are:",
+          "",
+          "United States — for Google services (Sign-In, Play Billing, Mobile Ads, Gemini), OpenRouter, and Nvidia NIM OCR processing.",
+          "European Economic Area or other Supabase regions — for authentication, database, and Edge Functions, depending on your Supabase project's configured region.",
+          "",
+          "When we transfer personal data outside the European Economic Area, we rely on safeguards such as the European Commission's Standard Contractual clauses (SCCs), the EU-U.S. Data Privacy Framework (where applicable), or equivalent contractual protections. A copy of the relevant safeguards can be requested by contacting us.",
+          "",
+          "Under Indonesian law (UU PDP Pasal 56), cross-border transfers are subject to requirements of adequate protection in the destination country or explicit consent from the data subject. Where required, we obtain such consent at the time of account creation.",
         ],
       },
       {
@@ -121,9 +164,41 @@ export const privacyPolicy: LegalContent = {
         ],
       },
       {
+        heading: "Data Breach Notification",
+        body: [
+          "In the event of a personal data breach that is likely to result in a high risk to your rights and freedoms, we will:",
+          "",
+          "Notify the relevant supervisory authority (the data protection authority in your jurisdiction) within 72 hours of becoming aware of the breach, as required by GDPR Art. 33.",
+          "Notify affected users without undue delay, as required by GDPR Art. 34, when the breach poses a high risk to their rights.",
+          "For users in Indonesia, notify the Personal Data Protection Authority (Otoritas Pelindungan Data Pribadi) and affected users within 3 x 24 hours of becoming aware, as required by UU PDP Pasal 46.",
+          "",
+          "The notification will describe the nature of the breach, the categories and approximate number of affected users, the likely consequences, and the measures taken or proposed to address it.",
+        ],
+      },
+      {
+        heading: "Your Rights",
+        body: [
+          "Subject to applicable law, you have the following rights regarding your personal data:",
+          "",
+          "Right of access (GDPR Art. 15 / UU PDP Pasal 7) — to request a copy of the personal data we hold about you.",
+          "Right to rectification (GDPR Art. 16 / UU PDP Pasal 8) — to correct inaccurate or incomplete data. Most profile fields can be updated from Profile & Settings; bill fields can be edited in the app.",
+          "Right to erasure / right to be forgotten (GDPR Art. 17 / UU PDP Pasal 9) — to request deletion of your account and associated data from Profile & Settings, or by contacting us.",
+          "Right to restriction of processing (GDPR Art. 18) — to request that we limit how we use your data in certain circumstances.",
+          "Right to data portability (GDPR Art. 20 / UU PDP Pasal 11) — to receive your data in a structured, commonly used, machine-readable format. Bills and their data can be exported as PDF and CSV from the app.",
+          "Right to object (GDPR Art. 21) — to object to processing based on legitimate interest, including profiling related to direct marketing.",
+          "Right to withdraw consent (GDPR Art. 7(3) / UU PDP Pasal 25) — to withdraw any consent you have given, at any time, without affecting the lawfulness of processing before withdrawal. Marketing opt-in can be withdrawn from Profile & Settings.",
+          "Right to lodge a complaint — with your local data protection authority (for EEA residents; see https://edpb.europa.eu/about-edpb/about-edpb/members_en), or with KOMINFO / the Personal Data Protection Authority (for Indonesian residents).",
+          "Right not to be subject to automated decision-making (GDPR Art. 22) — BagiStruk does not make decisions based solely on automated processing that produce legal or similarly significant effects on you.",
+          "",
+          "To exercise any of these rights, contact us at alam.aby.b@gmail.com. We will respond within 30 days, or earlier if required by local law. We may need to verify your identity before acting on the request.",
+        ],
+      },
+      {
         heading: "Children",
         body: [
-          "BagiStruk is not intended for children under the age required by applicable law to consent to digital services. If you believe a child has provided personal data, contact us so we can review and delete it.",
+          "BagiStruk is not intended for children under 13 years of age (the threshold under the US Children's Online Privacy Protection Act, COPPA), or under the age required by your local law to consent to digital services (16 in most of the European Economic Area by default, 18 in Indonesia under the Civil Code, or younger if your country's law allows consent at a lower age with parental approval).",
+          "",
+          "We do not knowingly collect personal data from children below the applicable age threshold. If you believe a child has provided personal data to us, contact us at alam.aby.b@gmail.com so we can review, delete the data, and close the account. Where required by law, we will obtain verifiable parental consent before processing the child's data.",
         ],
       },
       {
@@ -134,14 +209,24 @@ export const privacyPolicy: LegalContent = {
       },
       {
         heading: "Contact",
-        body: ["For privacy questions or deletion requests, contact: alam.aby.b@gmail.com"],
+        body: [
+          "For privacy questions, deletion requests, or to exercise your data protection rights, contact us:",
+          "",
+          "Email: alam.aby.b@gmail.com",
+          "",
+          "Postal address (also our EEA Art. 27 contact):",
+          "Alam Aby Bashit",
+          "Komplek Kamarasan Residence A3/2 Kelurahan Buahbatu Kecamatan Bojongsoang",
+          "Bandung, 40287",
+          "Indonesia",
+        ],
       },
     ],
   },
   id: {
     title: "Kebijakan Privasi",
     effectiveDateLabel: "Tanggal berlaku",
-    effectiveDate: "2026-06-11",
+    effectiveDate: "2026-06-15",
     intro:
       "Kebijakan ini menjelaskan bagaimana BagiStruk mengumpulkan, menggunakan, menyimpan, dan menghapus data. Dokumen ini disediakan untuk transparansi produk dan sebaiknya ditinjau kembali untuk kepatuhan hukum sebelum dipublikasikan.",
     backToHome: "Kembali ke beranda",
@@ -150,6 +235,22 @@ export const privacyPolicy: LegalContent = {
         heading: "Ringkasan",
         body: [
           "BagiStruk adalah aplikasi pembagi tagihan yang membantu pengguna memindai struk, mengekstrak item tagihan dengan OCR, dan membagi pembayaran antar peserta. Kami hanya mengumpulkan data yang diperlukan agar fitur aplikasi berjalan. Kami tidak menjual data pribadi. Jika iklan diaktifkan, kami memakai Google Mobile Ads / AdMob untuk menampilkan iklan dan mengukur performa iklan.",
+        ],
+      },
+      {
+        heading: "Siapa Kami",
+        body: [
+          "Pengontrol data untuk BagiStruk adalah:",
+          "",
+          "[Nama operator — diisi sebelum rilis publik]",
+          "[Alamat jalan]",
+          "[Kota, kode pos]",
+          "[Negara]",
+          "Email: alam.aby.b@gmail.com",
+          "",
+          "Jika Anda berada di Wilayah Ekonomi Eropa, alamat di atas juga berfungsi sebagai kontak kami untuk keperluan Pasal 27 GDPR saat Anda tidak dapat menghubungi kami melalui email. Anda selalu dapat menghubungi kami di email di atas dari mana pun.",
+          "",
+          "Untuk pengguna di Indonesia, Anda dapat mengajukan keluhan ke Kementerian Komunikasi dan Informatika (KOMINFO) atau Otoritas Pelindungan Data Pribadi (OPDP) setelah badan tersebut beroperasi. Daftar otoritas pengawas EEA tersedia di https://edpb.europa.eu/about-edpb/about-edpb/members_en.",
         ],
       },
       {
@@ -196,9 +297,36 @@ export const privacyPolicy: LegalContent = {
         ],
       },
       {
+        heading: "Dasar Hukum Pemrosesan",
+        body: [
+          "Kami memproses data pribadi Anda berdasarkan dasar hukum berikut, sesuai Pasal 6 GDPR (Uni Eropa) dan ketentuan setara UU No. 27/2022 tentang Pelindungan Data Pribadi (\"UU PDP\"):",
+          "",
+          "Data akun, autentikasi, dan data tagihan — untuk pelaksanaan kontrak yang Anda sepakati saat membuat akun (Pasal 6(1)(b) GDPR / Pasal 23 UU PDP).",
+          "Foto struk dan pemrosesan OCR — dengan persetujuan eksplisit Anda setiap kali Anda mengirim pindaian (Pasal 6(1)(a) GDPR). Pindaian yang dikirim sebelum penarikan persetujuan tetap akan diproses.",
+          "Email promosi dan komunikasi pemasaran — hanya dengan persetujuan opt-in Anda (Pasal 6(1)(a) GDPR / Pasal 23 UU PDP). Anda dapat menarik persetujuan ini kapan saja dari Profil & Pengaturan, atau melalui link unsubscribe di email pemasaran apa pun.",
+          "Iklan yang dipersonalisasi — dengan persetujuan Anda melalui Google User Messaging Platform (UMP) bila diwajibkan hukum yang berlaku (Pasal 6(1)(a) GDPR / ePrivacy Directive). Kami tidak mempersonalisasi iklan untuk pengguna yang tidak memberikan persetujuan.",
+          "Data teknis, keamanan, dan anti-penyalahgunaan — berdasarkan kepentingan sah kami untuk menjaga layanan tetap aman dan mencegah fraud (Pasal 6(1)(f) GDPR).",
+          "Reminder tidak aktif dan notifikasi pembersihan akun — berdasarkan kepentingan sah kami dalam memelihara catatan akun yang akurat (Pasal 6(1)(f) GDPR).",
+          "Alert operasional tentang masalah penyedia OCR — berdasarkan kepentingan sah kami dalam mengoperasikan layanan yang andal (Pasal 6(1)(f) GDPR).",
+        ],
+      },
+      {
         heading: "Penyimpanan Dan Pemrosesan",
         body: [
           "Data aplikasi disimpan di Supabase, termasuk data autentikasi dan record database PostgreSQL. Foto struk diproses oleh Supabase Edge Functions. Pemrosesan OCR dapat memanggil penyedia AI/OCR pihak ketiga seperti Google Gemini, OpenRouter, dan Nvidia NIM. API key untuk layanan tersebut disimpan di sisi server dan tidak dibundel ke aplikasi mobile.",
+        ],
+      },
+      {
+        heading: "Transfer Data Lintas Negara",
+        body: [
+          "Data Anda dapat ditransfer dan diproses di negara selain negara tempat tinggal Anda. Tujuan utama:",
+          "",
+          "Amerika Serikat — untuk layanan Google (Sign-In, Play Billing, Mobile Ads, Gemini), OpenRouter, dan pemrosesan OCR Nvidia NIM.",
+          "Wilayah Ekonomi Eropa atau region Supabase lain — untuk autentikasi, database, dan Edge Functions, tergantung region project Supabase Anda.",
+          "",
+          "Ketika kami mentransfer data pribadi keluar dari Wilayah Ekonomi Eropa, kami mengandalkan perlindungan seperti Standard Contractual clauses (SCC) dari European Commission, EU-U.S. Data Privacy Framework (bila berlaku), atau perlindungan kontraktual setara. Salinan perlindungan relevan dapat diminta dengan menghubungi kami.",
+          "",
+          "Berdasarkan UU PDP Pasal 56, transfer lintas negara tunduk pada persyaratan tingkat perlindungan yang memadai di negara tujuan atau persetujuan eksplisit dari subjek data. Bila diperlukan, kami memperoleh persetujuan tersebut pada saat pembuatan akun.",
         ],
       },
       {
@@ -240,9 +368,41 @@ export const privacyPolicy: LegalContent = {
         ],
       },
       {
+        heading: "Notifikasi Pelanggaran Data",
+        body: [
+          "Apabila terjadi pelanggaran data pribadi yang kemungkinan besar berisiko tinggi terhadap hak dan kebebasan Anda, kami akan:",
+          "",
+          "Memberi tahu otoritas pengawas terkait (otoritas perlindungan data di yurisdiksi Anda) dalam 72 jam setelah menyadari pelanggaran, sesuai Pasal 33 GDPR.",
+          "Memberi tahu pengguna terdampak tanpa penundaan yang tidak semestinya, sesuai Pasal 34 GDPR, ketika pelanggaran menimbulkan risiko tinggi terhadap hak mereka.",
+          "Untuk pengguna di Indonesia, memberi tahu Otoritas Pelindungan Data Pribadi (OPDP) dan pengguna terdampak dalam 3 x 24 jam setelah menyadari, sesuai Pasal 46 UU PDP.",
+          "",
+          "Notifikasi akan menjelaskan sifat pelanggaran, kategori dan perkiraan jumlah pengguna terdampak, kemungkinan konsekuensi, serta langkah-langkah yang diambil atau diusulkan untuk mengatasinya.",
+        ],
+      },
+      {
+        heading: "Hak Anda",
+        body: [
+          "Sesuai hukum yang berlaku, Anda memiliki hak-hak berikut terkait data pribadi Anda:",
+          "",
+          "Hak akses (Pasal 15 GDPR / Pasal 7 UU PDP) — meminta salinan data pribadi yang kami simpan tentang Anda.",
+          "Hak koreksi (Pasal 16 GDPR / Pasal 8 UU PDP) — mengoreksi data yang tidak akurat atau tidak lengkap. Sebagian besar field profil dapat diubah dari Profil & Pengaturan; field tagihan dapat diedit di aplikasi.",
+          "Hak penghapusan / hak untuk dilupakan (Pasal 17 GDPR / Pasal 9 UU PDP) — meminta penghapusan akun dan data terkait dari Profil & Pengaturan, atau dengan menghubungi kami.",
+          "Hak pembatasan pemrosesan (Pasal 18 GDPR) — meminta kami membatasi penggunaan data Anda dalam keadaan tertentu.",
+          "Hak portabilitas data (Pasal 20 GDPR / Pasal 11 UU PDP) — menerima data Anda dalam format terstruktur, umum digunakan, dan dapat dibaca mesin. Tagihan dan datanya dapat diekspor sebagai PDF dan CSV dari aplikasi.",
+          "Hak keberatan (Pasal 21 GDPR) — menolak pemrosesan berdasarkan kepentingan sah, termasuk profiling terkait pemasaran langsung.",
+          "Hak penarikan persetujuan (Pasal 7(3) GDPR / Pasal 25 UU PDP) — menarik persetujuan yang telah Anda berikan, kapan saja, tanpa memengaruhi keabsahan pemrosesan sebelum penarikan. Opt-in pemasaran dapat ditarik dari Profil & Pengaturan.",
+          "Hak mengajukan keluhan — ke otoritas perlindungan data lokal (untuk warga EEA; lihat https://edpb.europa.eu/about-edpb/about-edpb/members_en), atau ke KOMINFO / Otoritas Pelindungan Data Pribadi (untuk warga Indonesia).",
+          "Hak untuk tidak menjadi subjek pengambilan keputusan otomatis (Pasal 22 GDPR) — BagiStruk tidak membuat keputusan berdasarkan pemrosesan otomatis semata yang menghasilkan efek hukum atau efek signifikan serupa terhadap Anda.",
+          "",
+          "Untuk menggunakan hak-hak ini, hubungi kami di alam.aby.b@gmail.com. Kami akan merespons dalam 30 hari, atau lebih cepat bila diwajibkan hukum lokal. Kami mungkin perlu memverifikasi identitas Anda sebelum menindaklanjuti permintaan.",
+        ],
+      },
+      {
         heading: "Anak-Anak",
         body: [
-          "BagiStruk tidak ditujukan untuk anak di bawah usia yang diwajibkan hukum untuk memberikan persetujuan layanan digital. Jika Anda yakin seorang anak memberikan data pribadi, hubungi kami agar dapat ditinjau dan dihapus.",
+          "BagiStruk tidak ditujukan untuk anak di bawah 13 tahun (batas minimum US Children's Online Privacy Protection Act, COPPA), atau di bawah usia yang diwajibkan hukum lokal Anda untuk menyetujui layanan digital (16 tahun di sebagian besar Wilayah Ekonomi Eropa secara default, 18 tahun di Indonesia menurut Kitab Undang-Undang Hukum Perdata, atau lebih muda bila hukum negara Anda mengizinkan persetujuan pada usia lebih muda dengan persetujuan orang tua).",
+          "",
+          "Kami tidak dengan sengaja mengumpulkan data pribadi dari anak di bawah batas usia yang berlaku. Jika Anda yakin seorang anak telah memberikan data pribadi kepada kami, hubungi kami di alam.aby.b@gmail.com agar kami dapat meninjau, menghapus data, dan menutup akun. Bila diwajibkan hukum, kami akan memperoleh persetujuan orang tua yang dapat diverifikasi sebelum memproses data anak.",
         ],
       },
       {
@@ -253,7 +413,17 @@ export const privacyPolicy: LegalContent = {
       },
       {
         heading: "Kontak",
-        body: ["Pertanyaan privasi atau permintaan penghapusan data: alam.aby.b@gmail.com"],
+        body: [
+          "Untuk pertanyaan privasi, permintaan penghapusan, atau penggunaan hak perlindungan data Anda, hubungi kami:",
+          "",
+          "Email: alam.aby.b@gmail.com",
+          "",
+          "Alamat pos (juga kontak Pasal 27 GDPR kami):",
+          "[Nama operator — diisi sebelum rilis publik]",
+          "[Alamat jalan]",
+          "[Kota, kode pos]",
+          "[Negara]",
+        ],
       },
     ],
   },
@@ -263,7 +433,7 @@ export const termsOfService: LegalContent = {
   en: {
     title: "Terms of Service",
     effectiveDateLabel: "Effective date",
-    effectiveDate: "2026-06-11",
+    effectiveDate: "2026-06-15",
     intro:
       "These Terms explain the basic rules for using BagiStruk. This document is provided for product transparency and should be reviewed for legal compliance before publication.",
     backToHome: "Back to home",
@@ -277,15 +447,22 @@ export const termsOfService: LegalContent = {
       {
         heading: "2. Acceptance",
         body: [
-          "By using BagiStruk, you agree to these Terms and the Privacy Policy. If you do not agree, do not use the app.",
+          "The first time you use BagiStruk, the app will ask you to read and accept these Terms and the Privacy Policy. Your continued use of the app confirms that you have read, understood, and agreed to both documents.",
+          "",
+          "Minimum age. BagiStruk is not intended for children under 13 years of age (the threshold under the US Children's Online Privacy Protection Act, COPPA), or under the age required by your local law to consent to digital services (16 in most of the European Economic Area by default, 18 in Indonesia under the Civil Code, or younger if your country's law allows consent at a lower age with parental approval). By accepting these Terms, you confirm that you meet the minimum age requirement in your jurisdiction. If you do not, do not use the app.",
+          "",
+          "If you do not agree with these Terms, do not use the app. You can uninstall BagiStruk at any time to end your agreement with us.",
         ],
       },
       {
         heading: "3. Accounts",
         body: [
           "You may use some features with an anonymous session. You may also register or sign in using email/password or Google Sign-In. You are responsible for keeping your device and account access secure.",
+          "",
           "Anonymous accounts are intended for temporary or lightweight use. Registered accounts allow data to persist across devices and sessions, depending on the authentication provider and backend availability.",
+          "",
           "OCR scanning and selected features may be limited by credits or plan entitlements. Anonymous users receive a limited lifetime credit allowance, free registered users may receive a monthly credit allowance, and Plus users may receive higher limits and additional features such as longer history access, monthly insights, PDF/CSV export, per-bill currency override, transfer bank information in settlement messages, deleted-bill recovery, and an ad-free experience when ads are enabled. For Anonymous and Free users, a valid OCR result may consume credits based on the number of receipt photos attached to that scan. For Plus users, a valid OCR scan may continue to consume one credit even when multiple photos are attached for a long receipt. Eligible registered users may receive a one-time Plus trial. When the trial ends, access returns to the Free plan unless a paid Plus subscription is active. Unused monthly credits may expire at the end of the applicable period.",
+          "",
           "Paid subscriptions and one-time OCR credit packs, when available, are processed through Google Play Billing on Android. Subscription access continues while Google Play reports the subscription as active. One-time OCR credit packs are added to your account after server-side purchase verification. Refunds, cancellations, renewal timing, grace periods, and payment issues may affect access or available credits according to Google Play policies and the app's server-side entitlement records.",
         ],
       },
@@ -299,6 +476,7 @@ export const termsOfService: LegalContent = {
         heading: "5. OCR Accuracy",
         body: [
           "BagiStruk uses OCR and AI-assisted parsing to extract receipt data. Results may be incomplete, inaccurate, or misread. You are responsible for reviewing and correcting bill items, prices, taxes, service charges, and split amounts before relying on them.",
+          "",
           "BagiStruk is not a financial, tax, accounting, or legal advisory service.",
         ],
       },
@@ -317,6 +495,7 @@ export const termsOfService: LegalContent = {
         heading: "7. Data Retention And Inactive Accounts",
         body: [
           "Anonymous accounts may be deleted after 30 days of inactivity. Registered Free accounts may receive an inactivity reminder after 6 months of inactivity. If there is no activity within 30 days after the reminder, the account and associated app data may be deleted. Registered accounts with an active Plus entitlement are excluded from inactivity cleanup while the entitlement remains active. When Plus entitlement ends, the inactivity window for cleanup is counted from the later of the user's last app activity and the latest Plus entitlement end time.",
+          "",
           "Opening the app after receiving a reminder resets the pending inactivity deletion state.",
         ],
       },
@@ -345,33 +524,55 @@ export const termsOfService: LegalContent = {
         ],
       },
       {
-        heading: "12. Disclaimer",
+        heading: "12. Your Rights As A Consumer",
+        body: [
+          "Nothing in these Terms is intended to exclude, limit, or override rights that you have under mandatory law in your country of residence, including but not limited to:",
+          "",
+          "For users in the European Economic Area: the protections of the EU General Data Protection Regulation (GDPR), the ePrivacy Directive, the EU Consumer Rights Directive, and equivalent national laws.",
+          "For users in Indonesia: the protections of UU No. 27/2022 on Personal Data Protection and UU No. 8/1999 on Consumer Protection.",
+          "For users in the United States: applicable state consumer protection and privacy laws (e.g., CCPA/CPRA in California).",
+          "",
+          "If any provision of these Terms is found to be invalid or unenforceable in your jurisdiction, that provision will be limited or removed to the minimum extent necessary so that the remaining provisions remain in full force and effect.",
+        ],
+      },
+      {
+        heading: "13. Disclaimer",
         body: [
           'The app is provided "as is" and "as available". We do not guarantee that the app will be uninterrupted, error-free, or that OCR results will be accurate.',
         ],
       },
       {
-        heading: "13. Limitation Of Liability",
+        heading: "14. Limitation Of Liability",
         body: [
           "To the maximum extent permitted by law, we are not liable for indirect, incidental, special, consequential, or punitive damages, or for losses caused by incorrect OCR output, user input mistakes, service outages, data loss, or third-party services.",
         ],
       },
       {
-        heading: "14. Changes To These Terms",
+        heading: "15. Changes To These Terms",
         body: [
           "We may update these Terms from time to time. Continued use of the app after changes means you accept the updated Terms.",
         ],
       },
       {
-        heading: "15. Contact",
-        body: ["Questions about these Terms: alam.aby.b@gmail.com"],
+        heading: "16. Contact",
+        body: [
+          "Questions about these Terms, complaints, or requests to exercise your consumer rights:",
+          "",
+          "Email: alam.aby.b@gmail.com",
+          "",
+          "Postal address:",
+          "Alam Aby Bashit",
+          "Komplek Kamarasan Residence A3/2 Kelurahan Buahbatu Kecamatan Bojongsoang",
+          "Bandung, 40287",
+          "Indonesia",
+        ],
       },
     ],
   },
   id: {
     title: "Syarat dan Ketentuan",
     effectiveDateLabel: "Tanggal berlaku",
-    effectiveDate: "2026-06-11",
+    effectiveDate: "2026-06-15",
     intro:
       "Syarat ini menjelaskan aturan dasar penggunaan BagiStruk. Dokumen ini disediakan untuk transparansi produk dan sebaiknya ditinjau kembali untuk kepatuhan hukum sebelum dipublikasikan.",
     backToHome: "Kembali ke beranda",
@@ -385,15 +586,22 @@ export const termsOfService: LegalContent = {
       {
         heading: "2. Persetujuan",
         body: [
-          "Dengan menggunakan BagiStruk, Anda menyetujui Syarat ini dan Kebijakan Privasi. Jika tidak setuju, jangan gunakan aplikasi.",
+          "Saat pertama kali Anda menggunakan BagiStruk, aplikasi akan meminta Anda untuk membaca dan menyetujui Syarat ini dan Kebijakan Privasi. Penggunaan aplikasi yang berkelanjutan mengonfirmasi bahwa Anda telah membaca, memahami, dan menyetujui kedua dokumen.",
+          "",
+          "Batas usia minimum. BagiStruk tidak ditujukan untuk anak di bawah 13 tahun (batas minimum US Children's Online Privacy Protection Act, COPPA), atau di bawah usia yang diwajibkan hukum lokal Anda untuk menyetujui layanan digital (16 tahun di sebagian besar Wilayah Ekonomi Eropa secara default, 18 tahun di Indonesia menurut Kitab Undang-Undang Hukum Perdata, atau lebih muda bila hukum negara Anda mengizinkan persetujuan pada usia lebih muda dengan persetujuan orang tua). Dengan menyetujui Syarat ini, Anda menyatakan memenuhi batas usia minimum di yurisdiksi Anda. Jika tidak, jangan gunakan aplikasi.",
+          "",
+          "Jika Anda tidak setuju dengan Syarat ini, jangan gunakan aplikasi. Anda dapat menghapus instalasi BagiStruk kapan saja untuk mengakhiri perjanjian Anda dengan kami.",
         ],
       },
       {
         heading: "3. Akun",
         body: [
           "Sebagian fitur dapat digunakan dengan sesi anonim. Anda juga dapat mendaftar atau login menggunakan email/password atau Google Sign-In. Anda bertanggung jawab menjaga keamanan perangkat dan akses akun.",
+          "",
           "Akun anonim ditujukan untuk penggunaan sementara atau ringan. Akun terdaftar memungkinkan data bertahan lintas perangkat dan sesi, tergantung penyedia autentikasi dan ketersediaan backend.",
+          "",
           "Scan OCR dan fitur tertentu dapat dibatasi oleh credit atau entitlement plan. Pengguna anonim mendapat batas credit lifetime terbatas, pengguna terdaftar Free dapat mendapat credit bulanan, dan pengguna Plus dapat mendapat batas lebih tinggi serta fitur tambahan seperti akses History lebih panjang, insight bulanan, export PDF/CSV, penggantian currency per bill, info bank transfer di pesan settlement, pemulihan bill terhapus, dan pengalaman tanpa iklan saat iklan diaktifkan. Untuk pengguna Anonymous dan Free, hasil OCR valid dapat mengonsumsi credit sesuai jumlah foto struk yang dilampirkan pada scan tersebut. Untuk pengguna Plus, scan OCR valid dapat tetap mengonsumsi satu credit meskipun beberapa foto dilampirkan untuk struk panjang. Pengguna terdaftar yang memenuhi syarat dapat menerima trial Plus satu kali. Setelah trial berakhir, akses kembali ke plan Free kecuali subscription Plus berbayar aktif. Credit bulanan yang tidak digunakan dapat hangus pada akhir periode yang berlaku.",
+          "",
           "Subscription berbayar dan paket credit OCR sekali beli, jika tersedia, diproses melalui Google Play Billing di Android. Akses subscription berlaku selama Google Play melaporkan subscription masih aktif. Paket credit OCR sekali beli ditambahkan ke akun setelah verifikasi pembelian sisi server. Refund, pembatalan, waktu renewal, grace period, dan masalah pembayaran dapat memengaruhi akses atau credit yang tersedia sesuai kebijakan Google Play dan catatan entitlement server-side aplikasi.",
         ],
       },
@@ -407,6 +615,7 @@ export const termsOfService: LegalContent = {
         heading: "5. Akurasi OCR",
         body: [
           "BagiStruk menggunakan OCR dan parsing berbantuan AI untuk mengekstrak data struk. Hasil dapat tidak lengkap, tidak akurat, atau salah baca. Anda bertanggung jawab memeriksa dan memperbaiki item, harga, pajak, service, dan nominal pembagian sebelum mengandalkannya.",
+          "",
           "BagiStruk bukan layanan nasihat keuangan, pajak, akuntansi, atau hukum.",
         ],
       },
@@ -425,6 +634,7 @@ export const termsOfService: LegalContent = {
         heading: "7. Retensi Data Dan Akun Tidak Aktif",
         body: [
           "Akun anonim dapat dihapus setelah 30 hari tidak aktif. Akun terdaftar Free dapat menerima reminder setelah 6 bulan tidak aktif. Jika tidak ada aktivitas dalam 30 hari setelah reminder, akun dan data aplikasi terkait dapat dihapus. Akun terdaftar dengan entitlement Plus aktif dikecualikan dari pembersihan akun tidak aktif selama entitlement tersebut masih aktif. Setelah entitlement Plus berakhir, jendela tidak aktif untuk cleanup dihitung dari waktu yang lebih baru antara aktivitas terakhir pengguna dan waktu entitlement Plus terakhir berakhir.",
+          "",
           "Membuka aplikasi setelah menerima reminder akan mereset status penghapusan tidak aktif yang tertunda.",
         ],
       },
@@ -453,26 +663,48 @@ export const termsOfService: LegalContent = {
         ],
       },
       {
-        heading: "12. Penafian",
+        heading: "12. Hak Anda Sebagai Konsumen",
+        body: [
+          "Tidak ada dalam Syarat ini yang bertujuan untuk mengecualikan, membatasi, atau mengesampingkan hak yang Anda miliki berdasarkan hukum wajib di negara tempat tinggal Anda, termasuk namun tidak terbatas pada:",
+          "",
+          "Untuk pengguna di Wilayah Ekonomi Eropa: perlindungan dari EU General Data Protection Regulation (GDPR), ePrivacy Directive, EU Consumer Rights Directive, dan hukum nasional setara.",
+          "Untuk pengguna di Indonesia: perlindungan dari UU No. 27/2022 tentang Pelindungan Data Pribadi dan UU No. 8/1999 tentang Perlindungan Konsumen.",
+          "Untuk pengguna di Amerika Serikat: hukum perlindungan konsumen dan privasi negara bagian yang berlaku (misalnya CCPA/CPRA di California).",
+          "",
+          "Jika ada ketentuan dalam Syarat ini yang ditemukan tidak valid atau tidak dapat diterapkan di yurisdiksi Anda, ketentuan tersebut akan dibatasi atau dihapus seminimal mungkin sehingga ketentuan yang tersisa tetap berlaku penuh.",
+        ],
+      },
+      {
+        heading: "13. Penafian",
         body: [
           'Aplikasi disediakan "sebagaimana adanya" dan "sebagaimana tersedia". Kami tidak menjamin aplikasi selalu tersedia, bebas error, atau hasil OCR selalu akurat.',
         ],
       },
       {
-        heading: "13. Batasan Tanggung Jawab",
+        heading: "14. Batasan Tanggung Jawab",
         body: [
           "Sejauh diizinkan hukum, kami tidak bertanggung jawab atas kerugian tidak langsung, insidental, khusus, konsekuensial, atau punitif, atau kerugian akibat hasil OCR yang salah, kesalahan input pengguna, gangguan layanan, kehilangan data, atau layanan pihak ketiga.",
         ],
       },
       {
-        heading: "14. Perubahan Syarat",
+        heading: "15. Perubahan Syarat",
         body: [
           "Kami dapat memperbarui Syarat ini dari waktu ke waktu. Penggunaan aplikasi setelah perubahan berarti Anda menerima Syarat yang diperbarui.",
         ],
       },
       {
-        heading: "15. Kontak",
-        body: ["Pertanyaan tentang Syarat ini: alam.aby.b@gmail.com"],
+        heading: "16. Kontak",
+        body: [
+          "Pertanyaan tentang Syarat ini, keluhan, atau permintaan penggunaan hak konsumen Anda:",
+          "",
+          "Email: alam.aby.b@gmail.com",
+          "",
+          "Alamat pos:",
+          "[Nama operator — diisi sebelum rilis publik]",
+          "[Alamat jalan]",
+          "[Kota, kode pos]",
+          "[Negara]",
+        ],
       },
     ],
   },
