@@ -118,6 +118,7 @@ export const content = {
         "Receipt photos are used to process OCR and extract bill items.",
         "OCR API keys are stored on the server, not in the app.",
         "You can request account and data deletion per our privacy policy.",
+        "OCR processing may use third-party AI providers such as Google Gemini, OpenRouter, and Nvidia NIM.",
       ],
     },
     waitlist: {
@@ -141,11 +142,11 @@ export const content = {
         },
         {
           q: "Can I use it without an account?",
-          a: "Some flows can start anonymously. Creating a permanent account keeps your history safer across devices.",
+          a: "Some flows can start anonymously and you get 5 lifetime OCR credits. Creating a permanent account keeps your history across devices.",
         },
         {
           q: "What data is processed?",
-          a: "Receipt photos, bill items, participant names, and account data where relevant.",
+          a: "Receipt photos, bill items, participant names, and account data where relevant. For the full list and how we use each item, see our Privacy Policy.",
         },
         {
           q: "When will it be on Google Play?",
@@ -271,6 +272,7 @@ export const content = {
         "Foto struk dipakai untuk memproses OCR dan mengekstrak item tagihan.",
         "API key OCR disimpan di server, bukan di aplikasi.",
         "Kamu bisa meminta penghapusan akun dan data sesuai kebijakan privasi.",
+        "Pemrosesan OCR dapat menggunakan penyedia AI pihak ketiga seperti Google Gemini, OpenRouter, dan Nvidia NIM.",
       ],
     },
     waitlist: {
@@ -294,11 +296,11 @@ export const content = {
         },
         {
           q: "Apakah bisa dipakai tanpa akun?",
-          a: "Beberapa alur bisa dimulai secara anonim. Membuat akun permanen membuat riwayatmu lebih aman lintas perangkat.",
+          a: "Beberapa alur bisa dimulai secara anonim dan kamu mendapat 5 credit OCR lifetime. Membuat akun permanen membuat riwayatmu tetap ada lintas perangkat.",
         },
         {
           q: "Data apa yang diproses?",
-          a: "Foto struk, item tagihan, nama peserta, dan data akun bila relevan.",
+          a: "Foto struk, item tagihan, nama peserta, dan data akun bila relevan. Untuk daftar lengkap dan bagaimana kami menggunakan tiap item, lihat Kebijakan Privasi kami.",
         },
         {
           q: "Kapan tersedia di Google Play?",
