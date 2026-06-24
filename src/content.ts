@@ -13,6 +13,63 @@ export const meta: Record<Lang, { title: string; description: string }> = {
   },
 };
 
+type PageKey =
+  | "email_confirmed"
+  | "email_unsubscribed"
+  | "account_delete_completed"
+  | "email_preferences";
+
+export const pageMeta: Record<PageKey, Record<Lang, { title: string; description: string }>> = {
+  email_confirmed: {
+    en: {
+      title: "Subscription confirmed - BagiStruk",
+      description:
+        "Thanks for confirming your BagiStruk subscription. You'll receive product updates and release news by email.",
+    },
+    id: {
+      title: "Langganan terkonfirmasi - BagiStruk",
+      description:
+        "Terima kasih telah mengonfirmasi langganan BagiStruk. Anda akan menerima info produk dan berita rilis lewat email.",
+    },
+  },
+  email_unsubscribed: {
+    en: {
+      title: "Unsubscribed - BagiStruk",
+      description:
+        "You've been unsubscribed from BagiStruk updates. You can resubscribe anytime from the footer.",
+    },
+    id: {
+      title: "Berhenti berlangganan - BagiStruk",
+      description:
+        "Anda telah berhenti berlangganan update BagiStruk. Anda bisa berlangganan lagi kapan saja dari footer.",
+    },
+  },
+  account_delete_completed: {
+    en: {
+      title: "Account deleted - BagiStruk",
+      description:
+        "Your BagiStruk account and data have been deleted. Thanks for trying BagiStruk.",
+    },
+    id: {
+      title: "Akun dihapus - BagiStruk",
+      description:
+        "Akun BagiStruk dan data Anda telah dihapus. Terima kasih sudah mencoba BagiStruk.",
+    },
+  },
+  email_preferences: {
+    en: {
+      title: "Email preferences - BagiStruk",
+      description:
+        "Manage your BagiStruk email subscription. Resubscribe or unsubscribe in one click.",
+    },
+    id: {
+      title: "Preferensi email - BagiStruk",
+      description:
+        "Kelola langganan email BagiStruk Anda. Berlangganan lagi atau berhenti berlangganan dalam satu klik.",
+    },
+  },
+};
+
 export const content = {
   en: {
     nav: {
@@ -165,8 +222,60 @@ export const content = {
       comingSoon: "coming soon",
       contact: "Contact",
       rights: "All rights reserved.",
+      updates: "Stay updated",
+      updatesLabel: "Email address",
+      updatesPlaceholder: "you@example.com",
+      updatesSubmit: "Subscribe",
+      updatesSubmitting: "Subscribing…",
+      updatesSuccess: "Almost there — check your email to confirm.",
+      updatesErrorEmail: "Please enter a valid email address.",
+      updatesErrorDisposable: "Please use a non-disposable email address.",
+      updatesErrorRateLimit: "Too many attempts. Try again later.",
+      updatesErrorGeneric: "Something went wrong. Please try again.",
+      manageEmailPreferences: "Manage email preferences",
+      deleteAccountLink: "Delete my account",
     },
     langLabel: "Language",
+    accountDeleteModal: {
+      trigger: "Delete my account",
+      title: "Delete your BagiStruk account?",
+      body: "Enter the email address associated with your BagiStruk account. We'll send a confirmation link — your account will only be deleted after you click it.",
+      emailLabel: "Your account email",
+      emailPlaceholder: "you@example.com",
+      warning: "This will permanently delete your account, bills, and settlement history. You can also do this from Profile & Settings in the app.",
+      cancel: "Cancel",
+      submit: "Send deletion link",
+      submitting: "Sending…",
+      success: "If the email is registered, a confirmation link is on its way.",
+      errorEmail: "Please enter a valid email address.",
+      errorRateLimit: "Too many attempts. Try again later.",
+      errorGeneric: "Something went wrong. Please try again.",
+    },
+    emailPreferences: {
+      title: "Email preferences",
+      heading: "Manage your email preferences",
+      body: "Enter the email you used to subscribe. We'll send you a link to view and change your subscription settings.",
+      emailLabel: "Your email",
+      emailPlaceholder: "you@example.com",
+      submit: "Send me a link",
+      submitting: "Sending…",
+      success: "If the email is registered, a link is on its way.",
+      errorEmail: "Please enter a valid email address.",
+      errorRateLimit: "Too many attempts. Try again later.",
+      errorGeneric: "Something went wrong. Please try again.",
+    },
+    emailPreferencesManage: {
+      title: "Email preferences",
+      heading: "Your subscription",
+      statusSubscribed: "You're currently subscribed to BagiStruk updates.",
+      statusUnsubscribed: "You're currently unsubscribed.",
+      statusPending: "Your subscription is pending confirmation.",
+      statusNotFound: "We couldn't find a subscription for this email.",
+      resubscribe: "Re-subscribe",
+      unsubscribe: "Unsubscribe",
+      submitting: "Processing…",
+      success: "Done.",
+    },
   },
   id: {
     nav: {
@@ -319,7 +428,59 @@ export const content = {
       comingSoon: "segera",
       contact: "Kontak",
       rights: "Hak cipta dilindungi.",
+      updates: "Dapatkan update",
+      updatesLabel: "Alamat email",
+      updatesPlaceholder: "kamu@contoh.com",
+      updatesSubmit: "Berlangganan",
+      updatesSubmitting: "Memproses…",
+      updatesSuccess: "Hampir selesai — cek email untuk konfirmasi.",
+      updatesErrorEmail: "Masukkan alamat email yang valid.",
+      updatesErrorDisposable: "Gunakan alamat email yang bukan disposable.",
+      updatesErrorRateLimit: "Terlalu banyak percobaan. Coba lagi nanti.",
+      updatesErrorGeneric: "Terjadi kesalahan. Silakan coba lagi.",
+      manageEmailPreferences: "Kelola preferensi email",
+      deleteAccountLink: "Hapus akun saya",
     },
     langLabel: "Bahasa",
+    accountDeleteModal: {
+      trigger: "Hapus akun saya",
+      title: "Hapus akun BagiStruk Anda?",
+      body: "Masukkan alamat email yang terkait dengan akun BagiStruk Anda. Kami akan mengirim link konfirmasi — akun Anda hanya akan dihapus setelah Anda mengkliknya.",
+      emailLabel: "Email akun Anda",
+      emailPlaceholder: "kamu@contoh.com",
+      warning: "Tindakan ini akan menghapus permanen akun, bill, dan riwayat pelunasan Anda. Anda juga bisa melakukannya dari Profil & Pengaturan di aplikasi.",
+      cancel: "Batal",
+      submit: "Kirim link hapus akun",
+      submitting: "Mengirim…",
+      success: "Jika email terdaftar, link konfirmasi sedang dalam perjalanan.",
+      errorEmail: "Masukkan alamat email yang valid.",
+      errorRateLimit: "Terlalu banyak percobaan. Coba lagi nanti.",
+      errorGeneric: "Terjadi kesalahan. Silakan coba lagi.",
+    },
+    emailPreferences: {
+      title: "Preferensi email",
+      heading: "Kelola preferensi email Anda",
+      body: "Masukkan email yang Anda pakai untuk berlangganan. Kami akan mengirim link untuk melihat dan mengubah pengaturan langganan Anda.",
+      emailLabel: "Email Anda",
+      emailPlaceholder: "kamu@contoh.com",
+      submit: "Kirim link ke saya",
+      submitting: "Mengirim…",
+      success: "Jika email terdaftar, link sedang dalam perjalanan.",
+      errorEmail: "Masukkan alamat email yang valid.",
+      errorRateLimit: "Terlalu banyak percobaan. Coba lagi nanti.",
+      errorGeneric: "Terjadi kesalahan. Silakan coba lagi.",
+    },
+    emailPreferencesManage: {
+      title: "Preferensi email",
+      heading: "Langganan Anda",
+      statusSubscribed: "Anda saat ini berlangganan update BagiStruk.",
+      statusUnsubscribed: "Anda saat ini berhenti berlangganan.",
+      statusPending: "Langganan Anda menunggu konfirmasi.",
+      statusNotFound: "Kami tidak menemukan langganan untuk email ini.",
+      resubscribe: "Berlangganan lagi",
+      unsubscribe: "Berhenti berlangganan",
+      submitting: "Memproses…",
+      success: "Selesai.",
+    },
   },
 } as const;

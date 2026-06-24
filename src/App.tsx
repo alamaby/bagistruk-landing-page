@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Analytics } from "@vercel/analytics/react";
-import { content, meta, type Lang } from "./content";
+import { content, meta, pageMeta, type Lang } from "./content";
 import {
   PhoneMockup,
   ScanScreen,
@@ -23,6 +23,10 @@ import {
   CheckIcon,
 } from "./components/Icons";
 import { Faq } from "./components/Faq";
+import { FooterSubscribe } from "./components/FooterSubscribe";
+import { AccountDeleteModal } from "./components/AccountDeleteModal";
+import { EmailSystemPage } from "./components/EmailSystemPage";
+import { EmailPreferencesPage } from "./components/EmailPreferencesPage";
 import { privacyPolicy, termsOfService, type LegalContent } from "./legalContent";
 import { findEmailCampaign, type EmailCampaign } from "./emailCampaignContent";
 import { trackCtaClick, type AnalyticsPage } from "./utils/analytics";
@@ -52,7 +56,21 @@ function getPage(): AnalyticsPage {
   const path = window.location.pathname.replace(/\/$/, "");
   if (path === "/privacy" || path === "/id/privacy") return "privacy";
   if (path === "/terms" || path === "/id/terms") return "terms";
+  if (path === "/emails/confirmed" || path === "/id/emails/confirmed")
+    return "email_confirmed";
+  if (path === "/emails/unsubscribed" || path === "/id/emails/unsubscribed")
+    return "email_unsubscribed";
   if (path.startsWith("/emails/") || path.startsWith("/id/emails/")) return "email";
+  if (
+    path === "/account-delete/completed" ||
+    path === "/id/account-delete/completed"
+  )
+    return "account_delete_completed";
+  if (
+    path === "/account/email-preferences" ||
+    path === "/id/account/email-preferences"
+  )
+    return "email_preferences";
   return "home";
 }
 
@@ -74,7 +92,27 @@ function getCanonicalUrl(page: AnalyticsPage, lang: Lang) {
     const slug = getEmailSlug();
     return `${SITE_URL}${lang === "id" ? `/id/emails/${slug ?? ""}` : `/emails/${slug ?? ""}`}`;
   }
+  if (page === "email_confirmed")
+    return `${SITE_URL}${lang === "id" ? "/id/emails/confirmed" : "/emails/confirmed"}`;
+  if (page === "email_unsubscribed")
+    return `${SITE_URL}${lang === "id" ? "/id/emails/unsubscribed" : "/emails/unsubscribed"}`;
+  if (page === "account_delete_completed")
+    return `${SITE_URL}${lang === "id" ? "/id/account-delete/completed" : "/account-delete/completed"}`;
+  if (page === "email_preferences")
+    return `${SITE_URL}${lang === "id" ? "/id/account/email-preferences" : "/account/email-preferences"}`;
   return `${SITE_URL}${lang === "id" ? "/id" : "/"}`;
+}
+
+function pagePathForLang(page: AnalyticsPage, lang: Lang, emailSlug: string | null) {
+  const id = lang === "id";
+  if (page === "privacy") return id ? "/id/privacy" : "/privacy";
+  if (page === "terms") return id ? "/id/terms" : "/terms";
+  if (page === "email_confirmed") return id ? "/id/emails/confirmed" : "/emails/confirmed";
+  if (page === "email_unsubscribed") return id ? "/id/emails/unsubscribed" : "/emails/unsubscribed";
+  if (page === "account_delete_completed") return id ? "/id/account-delete/completed" : "/account-delete/completed";
+  if (page === "email_preferences") return id ? "/id/account/email-preferences" : "/account/email-preferences";
+  if (page === "email" && emailSlug) return id ? `/id/emails/${emailSlug}` : `/emails/${emailSlug}`;
+  return id ? "/id" : "/";
 }
 
 const workflowIcons = [CameraIcon, CheckListIcon, UsersIcon, WalletIcon];
@@ -84,6 +122,7 @@ const screenComponents = [ScanScreen, ReviewScreen, SplitScreen, SettlementScree
 
 export default function App() {
   const [lang, setLang] = useState<Lang>(detectInitialLang);
+  const [deleteOpen, setDeleteOpen] = useState(false);
   const page = getPage();
   const emailCampaign = page === "email" ? findEmailCampaign(getEmailSlug()) : undefined;
   const t = content[lang];
@@ -92,15 +131,26 @@ export default function App() {
     document.documentElement.lang = lang;
     const legalContent = getLegalContent(page);
     const emailText = emailCampaign?.text[lang];
+    const pageMetaInfo =
+      page === "email_confirmed" ||
+      page === "email_unsubscribed" ||
+      page === "account_delete_completed" ||
+      page === "email_preferences"
+        ? pageMeta[page][lang]
+        : null;
     const pageTitle =
       page === "email"
         ? `${emailText?.subject ?? "Email campaign"} - BagiStruk`
+        : pageMetaInfo
+          ? pageMetaInfo.title
         : page !== "home"
           ? `${legalContent[lang].title} - BagiStruk`
           : meta[lang].title;
     const pageDescription =
       page === "email"
         ? emailText?.preheader ?? "BagiStruk email campaign web version."
+        : pageMetaInfo
+          ? pageMetaInfo.description
         : page !== "home"
           ? legalContent[lang].intro
           : meta[lang].description;
@@ -154,22 +204,7 @@ export default function App() {
       window.localStorage.setItem(STORAGE_KEY, next);
       const currentPage = getPage();
       const emailSlug = getEmailSlug();
-      const path =
-        next === "id"
-          ? currentPage === "privacy"
-            ? "/id/privacy"
-            : currentPage === "terms"
-              ? "/id/terms"
-              : currentPage === "email" && emailSlug
-                ? `/id/emails/${emailSlug}`
-              : "/id"
-          : currentPage === "privacy"
-            ? "/privacy"
-            : currentPage === "terms"
-              ? "/terms"
-              : currentPage === "email" && emailSlug
-                ? `/emails/${emailSlug}`
-              : "/";
+      const path = pagePathForLang(currentPage, next, emailSlug);
       const hash = window.location.hash;
       window.history.replaceState(null, "", path + hash);
     } catch {
@@ -189,7 +224,70 @@ export default function App() {
     trackCtaClick({ id: eventId, label, lang, page, target: id });
     scrollTo(id);
   };
-
+  const outcome = (() => {
+    if (typeof window === "undefined") return null;
+    const p = new URLSearchParams(window.location.search);
+    const raw = p.get("outcome");
+    if (
+      raw === "success" ||
+      raw === "already" ||
+      raw === "expired" ||
+      raw === "success_expired_token" ||
+      raw === "unknown" ||
+      raw === "error"
+    ) {
+      return raw;
+    }
+    return null;
+  })();
+  const prefsToken = (() => {
+    if (typeof window === "undefined") return null;
+    const p = new URLSearchParams(window.location.search);
+    return p.get("token");
+  })();
+  const homeHref = lang === "id" ? "/id" : "/";
+  const manageHref =
+    lang === "id" ? "/id/account/email-preferences" : "/account/email-preferences";
+  if (
+    page === "email_confirmed" ||
+    page === "email_unsubscribed" ||
+    page === "account_delete_completed"
+  ) {
+    return (
+      <>
+        <SimplePageChrome
+          lang={lang}
+          onChangeLang={changeLang}
+          onNav={trackAndScroll}
+          t={t}
+        >
+          <EmailSystemPage
+            lang={lang}
+            page={page}
+            outcome={outcome}
+            homeHref={homeHref}
+            manageHref={manageHref}
+          />
+        </SimplePageChrome>
+        <Analytics />
+      </>
+    );
+  }
+  if (page === "email_preferences") {
+    return (
+      <>
+        <SimplePageChrome
+          lang={lang}
+          onChangeLang={changeLang}
+          onNav={trackAndScroll}
+          t={t}
+        >
+          <EmailPreferencesPage lang={lang} token={prefsToken} />
+        </SimplePageChrome>
+        <Analytics />
+      </>
+    );
+  }
   if (page === "email") {
     return (
       <>
@@ -475,7 +573,7 @@ export default function App() {
       {/* FOOTER */}
       <footer className="border-t border-slate-200 bg-slate-900 text-slate-300">
         <div className="mx-auto max-w-6xl px-5 py-12">
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-6">
             <div className="sm:col-span-2 lg:col-span-2">
               <div className="flex items-center gap-2">
                 <img
@@ -609,6 +707,51 @@ export default function App() {
             </div>
             <div>
               <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                {t.footer.updates}
+              </h3>
+              <div className="mt-3">
+                <FooterSubscribe lang={lang} />
+              </div>
+              <ul className="mt-3 space-y-2 text-sm">
+                <li>
+                  <a
+                    href={manageHref}
+                    onClick={() =>
+                      trackCtaClick({
+                        id: "footer_manage_preferences",
+                        label: t.footer.manageEmailPreferences,
+                        lang,
+                        page,
+                        target: manageHref,
+                      })
+                    }
+                    className="hover:text-white"
+                  >
+                    {t.footer.manageEmailPreferences}
+                  </a>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      trackCtaClick({
+                        id: "footer_delete_account",
+                        label: t.footer.deleteAccountLink,
+                        lang,
+                        page,
+                        target: "modal:delete-account",
+                      });
+                      setDeleteOpen(true);
+                    }}
+                    className="hover:text-white"
+                  >
+                    {t.footer.deleteAccountLink}
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-500">
                 {t.footer.availableOn}
               </h3>
               <ul className="mt-3 space-y-2 text-sm">
@@ -644,8 +787,34 @@ export default function App() {
         </div>
       </footer>
       </div>
+      <AccountDeleteModal
+        lang={lang}
+        open={deleteOpen}
+        onClose={() => setDeleteOpen(false)}
+      />
       <Analytics />
     </>
+  );
+}
+
+function SimplePageChrome({
+  lang,
+  onChangeLang,
+  onNav,
+  t,
+  children,
+}: {
+  lang: Lang;
+  onChangeLang: (l: Lang) => void;
+  onNav: (id: string, eventId: string, label: string) => void;
+  t: (typeof content)[Lang];
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="min-h-screen bg-white text-slate-900 antialiased">
+      <Header lang={lang} onChangeLang={onChangeLang} onNav={onNav} t={t} />
+      {children}
+    </div>
   );
 }
 
