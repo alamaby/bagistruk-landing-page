@@ -22,7 +22,7 @@ export const privacyPolicy: LegalContent = {
   en: {
     title: "Privacy Policy",
     effectiveDateLabel: "Effective date",
-    effectiveDate: "2026-06-15",
+    effectiveDate: "2026-07-10",
     intro:
       "This policy explains how BagiStruk collects, uses, stores, and deletes data. This document is provided for product transparency and should be reviewed for legal compliance before publication.",
     backToHome: "Back to home",
@@ -31,6 +31,8 @@ export const privacyPolicy: LegalContent = {
         heading: "Summary",
         body: [
           "BagiStruk is a split-bill app that helps users scan receipts, extract bill items with OCR, and divide payments among participants. We collect only the data needed to provide these features. We do not sell personal data. If ads are enabled, we use Google Mobile Ads / AdMob to show ads and measure ad performance.",
+          "",
+          "For users in the European Economic Area, the United Kingdom, and Switzerland, we use Google's User Messaging Platform (UMP) and AdMob's European regulations message — a Google-certified Consent Management Platform (CMP) integrated with the IAB Transparency and Consent Framework (TCF) v2.3. This message may ask for consent for cookies, SDK local storage, advertising identifiers, and the collection and use of personal data for personalized ads, in line with Google's EU User Consent Policy, the ePrivacy Directive, and the GDPR.",
         ],
       },
       {
@@ -88,7 +90,7 @@ export const privacyPolicy: LegalContent = {
           "To store user preferences and personalize the app.",
           "To track last activity for account retention and cleanup.",
           "To send inactivity reminders to registered users before account cleanup.",
-          "To show ads, measure ad performance, prevent ad fraud, and respect consent choices when ads are enabled.",
+          "To show ads, measure ad performance, prevent ad fraud, and respect consent choices when ads are enabled. If you do not consent to personalized ads where required, Google Mobile Ads / AdMob may serve non-personalized or limited ads where supported.",
           "To diagnose errors, prevent abuse, and enforce database rate limits.",
         ],
       },
@@ -133,7 +135,7 @@ export const privacyPolicy: LegalContent = {
           "Google Sign-In: optional account login.",
           "Google Gemini, OpenRouter, and/or Nvidia NIM: OCR and receipt parsing.",
           "Resend or another email provider: inactivity reminder emails and operational OCR provider alerts, if configured.",
-          "Google Mobile Ads / AdMob: optional ad delivery, ad measurement, fraud prevention, and consent/privacy messaging.",
+          "Google User Messaging Platform (UMP) / AdMob: Google-certified CMP, optional ad delivery, ad measurement, fraud prevention, and consent/privacy messaging via the European regulations message, integrated with IAB TCF v2.3.",
           "Google Play Billing / Google Play Developer API: purchase processing and server-side purchase verification for subscriptions and one-time OCR credit packs.",
         ],
       },
@@ -204,7 +206,13 @@ export const privacyPolicy: LegalContent = {
       {
         heading: "Changes",
         body: [
-          "We may update this policy from time to time. The latest version should be made available in the app and on the public page hosting this document.",
+          "We may update this policy from time to time. The latest version should be made available in the app and on the public page hosting this document. Where consent is required for processing changes, we will ask for fresh consent through our CMP.",
+        ],
+      },
+      {
+        heading: "Ad Privacy Choices",
+        body: [
+          "If you are in a region that requires consent for personalized ads, the app will show a Google consent message the first time you launch it. You can also review or change your ad privacy choices at any time from Profile & Settings in the app. Outside these regions, the ad privacy entry point is hidden.",
         ],
       },
       {
@@ -226,7 +234,7 @@ export const privacyPolicy: LegalContent = {
   id: {
     title: "Kebijakan Privasi",
     effectiveDateLabel: "Tanggal berlaku",
-    effectiveDate: "2026-06-15",
+    effectiveDate: "2026-07-10",
     intro:
       "Kebijakan ini menjelaskan bagaimana BagiStruk mengumpulkan, menggunakan, menyimpan, dan menghapus data. Dokumen ini disediakan untuk transparansi produk dan sebaiknya ditinjau kembali untuk kepatuhan hukum sebelum dipublikasikan.",
     backToHome: "Kembali ke beranda",
@@ -235,6 +243,8 @@ export const privacyPolicy: LegalContent = {
         heading: "Ringkasan",
         body: [
           "BagiStruk adalah aplikasi pembagi tagihan yang membantu pengguna memindai struk, mengekstrak item tagihan dengan OCR, dan membagi pembayaran antar peserta. Kami hanya mengumpulkan data yang diperlukan agar fitur aplikasi berjalan. Kami tidak menjual data pribadi. Jika iklan diaktifkan, kami memakai Google Mobile Ads / AdMob untuk menampilkan iklan dan mengukur performa iklan.",
+          "",
+          "Untuk pengguna di Wilayah Ekonomi Eropa, Inggris Raya, dan Swiss, kami menggunakan Google User Messaging Platform (UMP) dan pesan European regulations AdMob — sebuah Consent Management Platform (CMP) tersertifikasi Google yang terintegrasi dengan IAB Transparency and Consent Framework (TCF) v2.3. Pesan ini dapat meminta persetujuan untuk cookie, penyimpanan lokal SDK, identifier iklan, serta pengumpulan dan penggunaan data pribadi untuk iklan yang dipersonalisasi, sesuai Google EU User Consent Policy, ePrivacy Directive, dan GDPR.",
         ],
       },
       {
@@ -242,10 +252,10 @@ export const privacyPolicy: LegalContent = {
         body: [
           "Pengontrol data untuk BagiStruk adalah:",
           "",
-          "[Nama operator — diisi sebelum rilis publik]",
-          "[Alamat jalan]",
-          "[Kota, kode pos]",
-          "[Negara]",
+          "Alam Aby Bashit",
+          "Komplek Kamarasan Residence A3/2 Kelurahan Buahbatu Kecamatan Bojongsoang",
+          "Bandung, 40287",
+          "Indonesia",
           "Email: alam.aby.b@gmail.com",
           "",
           "Jika Anda berada di Wilayah Ekonomi Eropa, alamat di atas juga berfungsi sebagai kontak kami untuk keperluan Pasal 27 GDPR saat Anda tidak dapat menghubungi kami melalui email. Anda selalu dapat menghubungi kami di email di atas dari mana pun.",
@@ -292,7 +302,7 @@ export const privacyPolicy: LegalContent = {
           "Menyimpan preferensi pengguna dan menyesuaikan pengalaman aplikasi.",
           "Melacak aktivitas terakhir untuk retensi dan pembersihan akun.",
           "Mengirim reminder tidak aktif kepada pengguna terdaftar sebelum pembersihan akun.",
-          "Menampilkan iklan, mengukur performa iklan, mencegah fraud iklan, dan menghormati pilihan consent saat iklan diaktifkan.",
+          "Menampilkan iklan, mengukur performa iklan, mencegah fraud iklan, dan menghormati pilihan consent saat iklan diaktifkan. Jika Anda tidak menyetujui iklan yang dipersonalisasi di wilayah yang mewajibkan, Google Mobile Ads / AdMob dapat menayangkan iklan non-personalized atau limited ads jika didukung.",
           "Mendiagnosis error, mencegah penyalahgunaan, dan menerapkan rate limit database.",
         ],
       },
@@ -337,7 +347,7 @@ export const privacyPolicy: LegalContent = {
           "Google Sign-In: login akun opsional.",
           "Google Gemini, OpenRouter, dan/atau Nvidia NIM: OCR dan parsing struk.",
           "Resend atau penyedia email lain: email reminder tidak aktif dan alert operasional penyedia OCR, jika dikonfigurasi.",
-          "Google Mobile Ads / AdMob: penayangan iklan opsional, pengukuran iklan, pencegahan fraud, dan pesan consent/privasi.",
+          "Google User Messaging Platform (UMP) / AdMob: CMP tersertifikasi Google, penayangan iklan opsional, pengukuran iklan, pencegahan fraud, dan pesan consent/privasi melalui European regulations message, terintegrasi dengan IAB TCF v2.3.",
           "Google Play Billing / Google Play Developer API: pemrosesan pembelian dan verifikasi pembelian sisi server untuk subscription dan paket credit OCR sekali beli.",
         ],
       },
@@ -408,7 +418,13 @@ export const privacyPolicy: LegalContent = {
       {
         heading: "Perubahan",
         body: [
-          "Kami dapat memperbarui kebijakan ini dari waktu ke waktu. Versi terbaru sebaiknya tersedia di aplikasi dan halaman publik yang menghosting dokumen ini.",
+          "Kami dapat memperbarui kebijakan ini dari waktu ke waktu. Versi terbaru sebaiknya tersedia di aplikasi dan halaman publik yang menghosting dokumen ini. Bila persetujuan diperlukan untuk perubahan pemrosesan, kami akan meminta persetujuan baru melalui CMP kami.",
+        ],
+      },
+      {
+        heading: "Pilihan Privasi Iklan",
+        body: [
+          "Jika Anda berada di wilayah yang mewajibkan persetujuan untuk iklan yang dipersonalisasi, aplikasi akan menampilkan pesan persetujuan Google saat pertama kali Anda meluncurkannya. Anda juga dapat meninjau atau mengubah pilihan privasi iklan kapan saja dari Profil & Pengaturan di aplikasi. Di luar wilayah tersebut, pintu masuk pilihan privasi iklan tidak ditampilkan.",
         ],
       },
       {
@@ -419,10 +435,10 @@ export const privacyPolicy: LegalContent = {
           "Email: alam.aby.b@gmail.com",
           "",
           "Alamat pos (juga kontak Pasal 27 GDPR kami):",
-          "[Nama operator — diisi sebelum rilis publik]",
-          "[Alamat jalan]",
-          "[Kota, kode pos]",
-          "[Negara]",
+          "Alam Aby Bashit",
+          "Komplek Kamarasan Residence A3/2 Kelurahan Buahbatu Kecamatan Bojongsoang",
+          "Bandung, 40287",
+          "Indonesia",
         ],
       },
     ],
@@ -433,7 +449,7 @@ export const termsOfService: LegalContent = {
   en: {
     title: "Terms of Service",
     effectiveDateLabel: "Effective date",
-    effectiveDate: "2026-06-15",
+    effectiveDate: "2026-07-10",
     intro:
       "These Terms explain the basic rules for using BagiStruk. This document is provided for product transparency and should be reviewed for legal compliance before publication.",
     backToHome: "Back to home",
@@ -506,6 +522,12 @@ export const termsOfService: LegalContent = {
         ],
       },
       {
+        heading: "8a. Advertising And Consent",
+        body: [
+          "When ads are enabled, BagiStruk may show ads through Google Mobile Ads / AdMob. Ad personalization and related consent choices are handled as described in the Privacy Policy and, where required, through Google's User Messaging Platform (CMP).",
+        ],
+      },
+      {
         heading: "9. Donations And External Links",
         body: [
           "The app may include links to websites, profiles, and donation platforms such as Buy Me a Coffee, Saweria, or Patreon. These services are operated by third parties. Donations are voluntary and do not guarantee specific features, support levels, or continued service availability.",
@@ -572,7 +594,7 @@ export const termsOfService: LegalContent = {
   id: {
     title: "Syarat dan Ketentuan",
     effectiveDateLabel: "Tanggal berlaku",
-    effectiveDate: "2026-06-15",
+    effectiveDate: "2026-07-10",
     intro:
       "Syarat ini menjelaskan aturan dasar penggunaan BagiStruk. Dokumen ini disediakan untuk transparansi produk dan sebaiknya ditinjau kembali untuk kepatuhan hukum sebelum dipublikasikan.",
     backToHome: "Kembali ke beranda",
@@ -645,6 +667,12 @@ export const termsOfService: LegalContent = {
         ],
       },
       {
+        heading: "8a. Iklan Dan Persetujuan",
+        body: [
+          "Saat iklan diaktifkan, BagiStruk dapat menampilkan iklan melalui Google Mobile Ads / AdMob. Personalisasi iklan dan pilihan persetujuan terkait diatur sebagaimana dijelaskan dalam Kebijakan Privasi dan, bila diwajibkan, melalui Google User Messaging Platform (CMP).",
+        ],
+      },
+      {
         heading: "9. Donasi Dan Link Eksternal",
         body: [
           "Aplikasi dapat memuat link ke website, profil, dan platform donasi seperti Buy Me a Coffee, Saweria, atau Patreon. Layanan tersebut dioperasikan oleh pihak ketiga. Donasi bersifat sukarela dan tidak menjamin fitur, level dukungan, atau ketersediaan layanan tertentu.",
@@ -700,10 +728,10 @@ export const termsOfService: LegalContent = {
           "Email: alam.aby.b@gmail.com",
           "",
           "Alamat pos:",
-          "[Nama operator — diisi sebelum rilis publik]",
-          "[Alamat jalan]",
-          "[Kota, kode pos]",
-          "[Negara]",
+          "Alam Aby Bashit",
+          "Komplek Kamarasan Residence A3/2 Kelurahan Buahbatu Kecamatan Bojongsoang",
+          "Bandung, 40287",
+          "Indonesia",
         ],
       },
     ],
