@@ -34,7 +34,7 @@ import { trackCtaClick, type AnalyticsPage } from "./utils/analytics";
 const PRIVACY_URL = "/privacy";
 const TERMS_URL = "/terms";
 const GITHUB_URL = "https://github.com/alamaby/bagistruk";
-const GOOGLE_PLAY_URL = "";
+const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=com.alamaby.bagistruk";
 const APP_STORE_URL = "";
 const CONTACT_EMAIL = "alam.aby.b@gmail.com";
 const APP_LOGO_URL = "/app-logo.png";
@@ -345,14 +345,31 @@ export default function App() {
               </p>
 
               <div className="mt-7 flex flex-col items-stretch justify-center gap-3 sm:flex-row lg:justify-start">
+                <a
+                  href={GOOGLE_PLAY_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() =>
+                    trackCtaClick({
+                      id: "hero_google_play",
+                      label: t.hero.primaryCta,
+                      lang,
+                      page,
+                      target: GOOGLE_PLAY_URL,
+                    })
+                  }
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-teal-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500/40"
+                >
+                  {t.hero.primaryCta}
+                  <ArrowRightIcon className="h-4 w-4" />
+                </a>
                 <button
                   onClick={() =>
                     trackAndScroll("workflow", "hero_workflow", t.hero.secondaryCta)
                   }
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-teal-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500/40"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-300"
                 >
                   {t.hero.secondaryCta}
-                  <ArrowRightIcon className="h-4 w-4" />
                 </button>
                 <button
                   onClick={() => trackAndScroll("features", "hero_features", t.nav.features)}
@@ -756,14 +773,27 @@ export default function App() {
               </h3>
               <ul className="mt-3 space-y-2 text-sm">
                 <li>
-                  <StoreLink
+                  <a
                     href={GOOGLE_PLAY_URL}
-                    label={t.footer.googlePlay}
-                    soon={t.footer.comingSoon}
-                    eventId="footer_google_play"
-                    lang={lang}
-                    page={page}
-                  />
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() =>
+                      trackCtaClick({
+                        id: "footer_google_play",
+                        label: t.footer.googlePlay,
+                        lang,
+                        page,
+                        target: GOOGLE_PLAY_URL,
+                      })
+                    }
+                    className="inline-block hover:opacity-80 transition-opacity"
+                  >
+                    <img
+                      src={lang === "id" ? "/GetItOnGooglePlay_Badge_Web_color_Indonesian.png" : "/GetItOnGooglePlay_Badge_Web_color_English.png"}
+                      alt={t.footer.googlePlay}
+                      className="h-10 w-auto"
+                    />
+                  </a>
                 </li>
                 <li>
                   <StoreLink

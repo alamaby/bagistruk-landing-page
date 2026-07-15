@@ -78,15 +78,15 @@ export const content = {
       guide: "User guide",
       screenshots: "Screenshots",
       faq: "FAQ",
-      cta: "Join waitlist",
+      cta: "Download",
     },
     hero: {
-      badge: "Preparing for Google Play internal testing.",
+      badge: "Now on Google Play",
       title: "BagiStruk",
       tagline: "Split bills from receipt photos, without rebuilding the receipt by hand.",
       supporting:
         "Scan receipts, review the OCR result, and split the bill with friends in a few steps.",
-      primaryCta: "Join the waitlist",
+      primaryCta: "Download on Google Play",
       secondaryCta: "See how it works",
       valueProps: [
         "No need to type every item by hand.",
@@ -178,18 +178,6 @@ export const content = {
         "OCR processing may use third-party AI providers such as Google Gemini, OpenRouter, and Nvidia NIM.",
       ],
     },
-    waitlist: {
-      heading: "Be the first to try BagiStruk",
-      subheading: "Join the waitlist and we'll let you know when testing access opens.",
-      emailLabel: "Email address",
-      emailPlaceholder: "you@example.com",
-      updates: "Send me occasional product updates.",
-      submit: "Join the waitlist",
-      submitting: "Joining…",
-      success: "You're on the list! We'll be in touch soon.",
-      errorEmail: "Please enter a valid email address.",
-      errorGeneric: "Something went wrong. Please try again.",
-    },
     faq: {
       heading: "Frequently asked questions",
       items: [
@@ -207,7 +195,7 @@ export const content = {
         },
         {
           q: "When will it be on Google Play?",
-          a: "We're currently preparing for internal testing. We'll update this when the release state changes.",
+          a: "BagiStruk is now available on Google Play. Download the app to start splitting bills from receipt photos.",
         },
       ],
     },
@@ -284,15 +272,15 @@ export const content = {
       guide: "Panduan",
       screenshots: "Screenshot",
       faq: "FAQ",
-      cta: "Gabung waitlist",
+      cta: "Download",
     },
     hero: {
-      badge: "Sedang disiapkan untuk Google Play internal testing.",
+      badge: "Sudah di Google Play",
       title: "BagiStruk",
       tagline: "Bagi tagihan dari foto struk, tanpa mengetik ulang semuanya.",
       supporting:
         "Scan struk, cek hasil OCR, lalu bagi tagihan ke teman dalam beberapa langkah.",
-      primaryCta: "Gabung waitlist",
+      primaryCta: "Download di Google Play",
       secondaryCta: "Lihat cara kerja",
       valueProps: [
         "Tidak perlu mengetik ulang semua item.",
@@ -384,18 +372,6 @@ export const content = {
         "Pemrosesan OCR dapat menggunakan penyedia AI pihak ketiga seperti Google Gemini, OpenRouter, dan Nvidia NIM.",
       ],
     },
-    waitlist: {
-      heading: "Jadi yang pertama mencoba BagiStruk",
-      subheading: "Gabung waitlist dan kami kabari saat akses testing dibuka.",
-      emailLabel: "Alamat email",
-      emailPlaceholder: "kamu@contoh.com",
-      updates: "Kirimi saya update produk sesekali.",
-      submit: "Gabung waitlist",
-      submitting: "Memproses…",
-      success: "Kamu sudah terdaftar! Kami akan segera menghubungi.",
-      errorEmail: "Masukkan alamat email yang valid.",
-      errorGeneric: "Terjadi kesalahan. Silakan coba lagi.",
-    },
     faq: {
       heading: "Pertanyaan yang sering diajukan",
       items: [
@@ -413,7 +389,7 @@ export const content = {
         },
         {
           q: "Kapan tersedia di Google Play?",
-          a: "Saat ini sedang disiapkan untuk internal testing. Kami akan memperbarui ini saat status rilis berubah.",
+          a: "BagiStruk sekarang sudah tersedia di Google Play. Download aplikasinya dan mulai bagi tagihan dari foto struk.",
         },
       ],
     },
