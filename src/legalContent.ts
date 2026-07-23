@@ -22,7 +22,7 @@ export const privacyPolicy: LegalContent = {
   en: {
     title: "Privacy Policy",
     effectiveDateLabel: "Effective date",
-    effectiveDate: "2026-07-10",
+    effectiveDate: "2026-07-22",
     intro:
       "This policy explains how BagiStruk collects, uses, stores, and deletes data. This document is provided for product transparency and should be reviewed for legal compliance before publication.",
     backToHome: "Back to home",
@@ -61,6 +61,7 @@ export const privacyPolicy: LegalContent = {
           "App activity metadata: last_active_at, used to understand when an account was last active and to support inactivity cleanup.",
           "Receipt photos: images you choose or capture for OCR processing.",
           "Bill data: merchant names, receipt dates, items, quantities, prices, taxes, service charges, participants, split assignments, settlement status, deleted-bill recovery metadata, exports generated on device, and optional transfer bank information used in settlement messages.",
+          "Participant contact info: when you import a participant using the Android system Contact Picker, only the name and phone number of the single contact you explicitly select are stored on our server as part of the bill. We do not access, read, or upload your full address book. No contacts permission is required.",
           "OCR credit data: plan/entitlement status, Plus trial start/end/consumption metadata, monthly credit grants, credit usage, and audit records needed to enforce scan limits and feature access.",
           "Google Play Billing data when purchases are available: product IDs, purchase tokens, order IDs, subscription status/expiry, and verification responses needed to grant Plus access or OCR credit packs.",
           "Support and reminder data: email address and inactivity reminder timestamps when reminders are sent.",
@@ -74,6 +75,7 @@ export const privacyPolicy: LegalContent = {
         bullets: [
           "Camera: to capture receipt photos.",
           "Photos / media access: to pick receipt photos from the gallery.",
+          "Contacts (no permission required): when you tap \"Import from contacts\" while adding a participant, the Android system Contact Picker opens. We receive only the name and phone number of the single contact you explicitly select. We do not access, read, or store your full address book. No READ_CONTACTS permission is requested.",
           "Internet / network state: to communicate with Supabase and OCR services.",
         ],
       },
@@ -111,7 +113,7 @@ export const privacyPolicy: LegalContent = {
       {
         heading: "Storage And Processing",
         body: [
-          "App data is stored in Supabase, including authentication data and PostgreSQL database records. Receipt images are processed by Supabase Edge Functions. OCR processing may call third-party AI/OCR providers such as Google Gemini, OpenRouter, and Nvidia NIM. API keys for those providers are stored server-side and are not bundled into the mobile app.",
+          "App data is stored in Supabase, including authentication data and PostgreSQL database records. Receipt images are processed by Supabase Edge Functions. OCR processing may call third-party AI/OCR providers such as Google Gemini, OpenRouter, Nvidia NIM, and Ollama. Receipt photos are sent to these providers for text extraction; images are processed transiently and are not stored by these providers. API keys for those providers are stored server-side and are not bundled into the mobile app.",
         ],
       },
       {
@@ -119,7 +121,7 @@ export const privacyPolicy: LegalContent = {
         body: [
           "Your data may be transferred to and processed in countries other than your country of residence. The main destinations are:",
           "",
-          "United States — for Google services (Sign-In, Play Billing, Mobile Ads, Gemini), OpenRouter, and Nvidia NIM OCR processing.",
+          "United States — for Google services (Sign-In, Play Billing, Mobile Ads, Gemini), OpenRouter, Nvidia NIM, and Ollama OCR processing.",
           "European Economic Area or other Supabase regions — for authentication, database, and Edge Functions, depending on your Supabase project's configured region.",
           "",
           "When we transfer personal data outside the European Economic Area, we rely on safeguards such as the European Commission's Standard Contractual clauses (SCCs), the EU-U.S. Data Privacy Framework (where applicable), or equivalent contractual protections. A copy of the relevant safeguards can be requested by contacting us.",
@@ -133,7 +135,7 @@ export const privacyPolicy: LegalContent = {
         bullets: [
           "Supabase: authentication, database, row-level security, Edge Functions, and scheduled cleanup.",
           "Google Sign-In: optional account login.",
-          "Google Gemini, OpenRouter, and/or Nvidia NIM: OCR and receipt parsing.",
+          "Google Gemini, OpenRouter, Nvidia NIM, and/or Ollama: OCR and receipt parsing.",
           "Resend or another email provider: inactivity reminder emails and operational OCR provider alerts, if configured.",
           "Google User Messaging Platform (UMP) / AdMob: Google-certified CMP, optional ad delivery, ad measurement, fraud prevention, and consent/privacy messaging via the European regulations message, integrated with IAB TCF v2.3.",
           "Google Play Billing / Google Play Developer API: purchase processing and server-side purchase verification for subscriptions and one-time OCR credit packs.",
@@ -234,7 +236,7 @@ export const privacyPolicy: LegalContent = {
   id: {
     title: "Kebijakan Privasi",
     effectiveDateLabel: "Tanggal berlaku",
-    effectiveDate: "2026-07-10",
+    effectiveDate: "2026-07-22",
     intro:
       "Kebijakan ini menjelaskan bagaimana BagiStruk mengumpulkan, menggunakan, menyimpan, dan menghapus data. Dokumen ini disediakan untuk transparansi produk dan sebaiknya ditinjau kembali untuk kepatuhan hukum sebelum dipublikasikan.",
     backToHome: "Kembali ke beranda",
@@ -273,6 +275,7 @@ export const privacyPolicy: LegalContent = {
           "Metadata aktivitas aplikasi: last_active_at, digunakan untuk mengetahui kapan akun terakhir aktif dan mendukung pembersihan akun tidak aktif.",
           "Foto struk: gambar yang Anda pilih atau ambil untuk pemrosesan OCR.",
           "Data tagihan: nama merchant, tanggal struk, item, jumlah, harga, pajak, service, peserta, pembagian item, status pembayaran, metadata pemulihan bill terhapus, export yang dibuat di perangkat, dan info bank transfer opsional untuk pesan settlement.",
+          "Info kontak peserta: ketika Anda mengimpor peserta menggunakan Android system Contact Picker, hanya nama dan nomor telepon dari satu kontak yang Anda pilih secara eksplisit yang disimpan di server kami sebagai bagian dari tagihan. Kami tidak mengakses, membaca, atau mengunggah buku alamat lengkap Anda. Tidak diperlukan izin kontak.",
           "Data credit OCR: status plan/entitlement, metadata mulai/akhir/pemakaian trial Plus, grant credit bulanan, penggunaan credit, dan audit yang dibutuhkan untuk menerapkan batas scan dan akses fitur.",
           "Data Google Play Billing saat pembelian tersedia: product ID, purchase token, order ID, status/expiry subscription, dan respons verifikasi yang dibutuhkan untuk memberi akses Plus atau paket credit OCR.",
           "Data dukungan dan reminder: alamat email dan timestamp reminder tidak aktif saat reminder dikirim.",
@@ -286,6 +289,7 @@ export const privacyPolicy: LegalContent = {
         bullets: [
           "Kamera: untuk mengambil foto struk.",
           "Akses foto / media: untuk memilih foto struk dari galeri.",
+          "Kontak (tidak perlu izin): ketika Anda memilih \"Import dari kontak\" saat menambahkan peserta, Android system Contact Picker akan terbuka. Kami hanya menerima nama dan nomor telepon dari satu kontak yang Anda pilih secara eksplisit. Kami tidak mengakses, membaca, atau menyimpan buku alamat lengkap Anda. Izin READ_CONTACTS tidak diminta.",
           "Internet / status jaringan: untuk berkomunikasi dengan Supabase dan layanan OCR.",
         ],
       },
@@ -323,7 +327,7 @@ export const privacyPolicy: LegalContent = {
       {
         heading: "Penyimpanan Dan Pemrosesan",
         body: [
-          "Data aplikasi disimpan di Supabase, termasuk data autentikasi dan record database PostgreSQL. Foto struk diproses oleh Supabase Edge Functions. Pemrosesan OCR dapat memanggil penyedia AI/OCR pihak ketiga seperti Google Gemini, OpenRouter, dan Nvidia NIM. API key untuk layanan tersebut disimpan di sisi server dan tidak dibundel ke aplikasi mobile.",
+          "Data aplikasi disimpan di Supabase, termasuk data autentikasi dan record database PostgreSQL. Foto struk diproses oleh Supabase Edge Functions. Pemrosesan OCR dapat memanggil penyedia AI/OCR pihak ketiga seperti Google Gemini, OpenRouter, Nvidia NIM, dan Ollama. Foto struk dikirim ke penyedia tersebut untuk ekstraksi teks; gambar diproses secara sementara dan tidak disimpan oleh penyedia tersebut. API key untuk layanan tersebut disimpan di sisi server dan tidak dibundel ke aplikasi mobile.",
         ],
       },
       {
@@ -331,7 +335,7 @@ export const privacyPolicy: LegalContent = {
         body: [
           "Data Anda dapat ditransfer dan diproses di negara selain negara tempat tinggal Anda. Tujuan utama:",
           "",
-          "Amerika Serikat — untuk layanan Google (Sign-In, Play Billing, Mobile Ads, Gemini), OpenRouter, dan pemrosesan OCR Nvidia NIM.",
+          "Amerika Serikat — untuk layanan Google (Sign-In, Play Billing, Mobile Ads, Gemini), OpenRouter, Nvidia NIM, dan pemrosesan OCR Ollama.",
           "Wilayah Ekonomi Eropa atau region Supabase lain — untuk autentikasi, database, dan Edge Functions, tergantung region project Supabase Anda.",
           "",
           "Ketika kami mentransfer data pribadi keluar dari Wilayah Ekonomi Eropa, kami mengandalkan perlindungan seperti Standard Contractual clauses (SCC) dari European Commission, EU-U.S. Data Privacy Framework (bila berlaku), atau perlindungan kontraktual setara. Salinan perlindungan relevan dapat diminta dengan menghubungi kami.",
@@ -345,7 +349,7 @@ export const privacyPolicy: LegalContent = {
         bullets: [
           "Supabase: autentikasi, database, row-level security, Edge Functions, dan scheduled cleanup.",
           "Google Sign-In: login akun opsional.",
-          "Google Gemini, OpenRouter, dan/atau Nvidia NIM: OCR dan parsing struk.",
+          "Google Gemini, OpenRouter, Nvidia NIM, dan/atau Ollama: OCR dan parsing struk.",
           "Resend atau penyedia email lain: email reminder tidak aktif dan alert operasional penyedia OCR, jika dikonfigurasi.",
           "Google User Messaging Platform (UMP) / AdMob: CMP tersertifikasi Google, penayangan iklan opsional, pengukuran iklan, pencegahan fraud, dan pesan consent/privasi melalui European regulations message, terintegrasi dengan IAB TCF v2.3.",
           "Google Play Billing / Google Play Developer API: pemrosesan pembelian dan verifikasi pembelian sisi server untuk subscription dan paket credit OCR sekali beli.",
@@ -449,7 +453,7 @@ export const termsOfService: LegalContent = {
   en: {
     title: "Terms of Service",
     effectiveDateLabel: "Effective date",
-    effectiveDate: "2026-07-10",
+    effectiveDate: "2026-07-22",
     intro:
       "These Terms explain the basic rules for using BagiStruk. This document is provided for product transparency and should be reviewed for legal compliance before publication.",
     backToHome: "Back to home",
@@ -594,7 +598,7 @@ export const termsOfService: LegalContent = {
   id: {
     title: "Syarat dan Ketentuan",
     effectiveDateLabel: "Tanggal berlaku",
-    effectiveDate: "2026-07-10",
+    effectiveDate: "2026-07-22",
     intro:
       "Syarat ini menjelaskan aturan dasar penggunaan BagiStruk. Dokumen ini disediakan untuk transparansi produk dan sebaiknya ditinjau kembali untuk kepatuhan hukum sebelum dipublikasikan.",
     backToHome: "Kembali ke beranda",
