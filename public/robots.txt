@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bagistruk.vercel.app/sitemap.xml
+Sitemap: https://bagistruk.alamaby.com/sitemap.xml

@@ -1,27 +1,279 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://bagistruk.vercel.app/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.vercel.app/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.vercel.app/id" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.vercel.app/" />
+    <loc>https://bagistruk.alamaby.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/" />
   </url>
   <url>
-    <loc>https://bagistruk.vercel.app/id</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.vercel.app/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.vercel.app/id" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.vercel.app/" />
+    <loc>https://bagistruk.alamaby.com/id</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/" />
   </url>
   <url>
-    <loc>https://bagistruk.vercel.app/privacy</loc>
+    <loc>https://bagistruk.alamaby.com/privacy</loc>
   </url>
   <url>
-    <loc>https://bagistruk.vercel.app/id/privacy</loc>
+    <loc>https://bagistruk.alamaby.com/id/privacy</loc>
   </url>
   <url>
-    <loc>https://bagistruk.vercel.app/terms</loc>
+    <loc>https://bagistruk.alamaby.com/terms</loc>
   </url>
   <url>
-    <loc>https://bagistruk.vercel.app/id/terms</loc>
+    <loc>https://bagistruk.alamaby.com/id/terms</loc>
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/docs</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/id/docs</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/docs/scan-receipt</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/scan-receipt" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/scan-receipt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/scan-receipt" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/id/docs/scan-receipt</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/scan-receipt" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/scan-receipt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/scan-receipt" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/docs/review-bill</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/review-bill" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/review-bill" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/review-bill" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/id/docs/review-bill</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/review-bill" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/review-bill" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/review-bill" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/docs/split-bill</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/split-bill" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/split-bill" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/split-bill" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/id/docs/split-bill</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/split-bill" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/split-bill" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/split-bill" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/docs/settlement</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/settlement" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/settlement" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/settlement" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/id/docs/settlement</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/settlement" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/settlement" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/settlement" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/docs/manual-bill</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/manual-bill" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/manual-bill" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/manual-bill" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/id/docs/manual-bill</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/manual-bill" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/manual-bill" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/manual-bill" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/docs/participants</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/participants" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/participants" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/participants" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/id/docs/participants</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/participants" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/participants" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/participants" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/docs/reminders</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/reminders" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/reminders" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/reminders" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/id/docs/reminders</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/reminders" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/reminders" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/reminders" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/docs/share-link</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/share-link" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/share-link" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/share-link" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/id/docs/share-link</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/share-link" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/share-link" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/share-link" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/docs/export</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/export" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/export" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/export" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/id/docs/export</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/export" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/export" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/export" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/docs/history</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/history" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/history" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/history" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/id/docs/history</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/history" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/history" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/history" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/docs/search-category</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/search-category" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/search-category" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/search-category" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/id/docs/search-category</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/search-category" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/search-category" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/search-category" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/docs/insight</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/insight" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/insight" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/insight" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/id/docs/insight</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/insight" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/insight" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/insight" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/docs/trash</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/trash" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/trash" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/trash" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/id/docs/trash</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/trash" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/trash" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/trash" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/docs/templates</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/templates" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/templates" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/templates" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/id/docs/templates</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/templates" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/templates" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/templates" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/docs/plus-ocr</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/plus-ocr" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/plus-ocr" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/plus-ocr" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/id/docs/plus-ocr</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/plus-ocr" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/plus-ocr" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/plus-ocr" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/docs/credits</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/credits" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/credits" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/credits" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/id/docs/credits</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/credits" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/credits" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/credits" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/docs/account</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/account" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/account" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/account" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/id/docs/account</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/account" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/account" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/account" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/docs/settings</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/settings" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/settings" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/settings" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/id/docs/settings</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/settings" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/settings" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/settings" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/docs/onboarding-about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/onboarding-about" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/onboarding-about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/onboarding-about" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/id/docs/onboarding-about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/onboarding-about" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/onboarding-about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/onboarding-about" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/docs/ads-consent</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/ads-consent" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/ads-consent" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/ads-consent" />
+  </url>
+  <url>
+    <loc>https://bagistruk.alamaby.com/id/docs/ads-consent</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bagistruk.alamaby.com/docs/ads-consent" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://bagistruk.alamaby.com/id/docs/ads-consent" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bagistruk.alamaby.com/docs/ads-consent" />
   </url>
 </urlset>

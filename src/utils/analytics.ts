@@ -4,9 +4,12 @@ export type AnalyticsPage =
   | "home"
   | "privacy"
   | "terms"
+  | "docs"
+  | "docs_feature"
   | "email"
   | "email_confirmed"
   | "email_unsubscribed"
+  | "email_unsubscribe_landing"
   | "account_delete_completed"
   | "email_preferences";
 type CtaClickEvent = {

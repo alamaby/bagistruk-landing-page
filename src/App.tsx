@@ -4,8 +4,6 @@ import { content, meta, pageMeta, type Lang } from "./content";
 import {
   PhoneMockup,
   ScanScreen,
-  ReviewScreen,
-  SplitScreen,
   SettlementScreen,
 } from "./components/PhoneMockup";
 import {
@@ -29,6 +27,8 @@ import { EmailSystemPage } from "./components/EmailSystemPage";
 import { EmailPreferencesPage } from "./components/EmailPreferencesPage";
 import { privacyPolicy, termsOfService, type LegalContent } from "./legalContent";
 import { findEmailCampaign, type EmailCampaign } from "./emailCampaignContent";
+import { DocDetailPage, DocsIndexPage } from "./components/Docs";
+import { findDoc } from "./docsContent";
 import { trackCtaClick, type AnalyticsPage } from "./utils/analytics";
 
 const PRIVACY_URL = "/privacy";
@@ -38,7 +38,7 @@ const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=com.alama
 const APP_STORE_URL = "";
 const CONTACT_EMAIL = "alam.aby.b@gmail.com";
 const APP_LOGO_URL = "/app-logo.png";
-const SITE_URL = "https://bagistruk.vercel.app";
+const SITE_URL = "https://bagistruk.alamaby.com";
 const OG_IMAGE_URL = `${SITE_URL}/icon.png`;
 
 const STORAGE_KEY = "bagistruk_lang";
@@ -56,10 +56,14 @@ function getPage(): AnalyticsPage {
   const path = window.location.pathname.replace(/\/$/, "");
   if (path === "/privacy" || path === "/id/privacy") return "privacy";
   if (path === "/terms" || path === "/id/terms") return "terms";
+  if (path === "/docs" || path === "/id/docs") return "docs";
+  if (path.startsWith("/docs/") || path.startsWith("/id/docs/")) return "docs_feature";
   if (path === "/emails/confirmed" || path === "/id/emails/confirmed")
     return "email_confirmed";
   if (path === "/emails/unsubscribed" || path === "/id/emails/unsubscribed")
     return "email_unsubscribed";
+  if (path === "/emails/unsubscribe" || path === "/id/emails/unsubscribe")
+    return "email_unsubscribe_landing";
   if (path.startsWith("/emails/") || path.startsWith("/id/emails/")) return "email";
   if (
     path === "/account-delete/completed" ||
@@ -85,6 +89,13 @@ function getEmailSlug() {
   return match?.[1] ?? null;
 }
 
+function getDocSlug() {
+  if (typeof window === "undefined") return null;
+  const path = window.location.pathname.replace(/\/$/, "");
+  const match = path.match(/^\/(?:id\/)?docs\/([^/]+)$/);
+  return match?.[1] ?? null;
+}
+
 function getCanonicalUrl(page: AnalyticsPage, lang: Lang) {
   if (page === "privacy") return `${SITE_URL}${lang === "id" ? "/id/privacy" : "/privacy"}`;
   if (page === "terms") return `${SITE_URL}${lang === "id" ? "/id/terms" : "/terms"}`;
@@ -96,35 +107,46 @@ function getCanonicalUrl(page: AnalyticsPage, lang: Lang) {
     return `${SITE_URL}${lang === "id" ? "/id/emails/confirmed" : "/emails/confirmed"}`;
   if (page === "email_unsubscribed")
     return `${SITE_URL}${lang === "id" ? "/id/emails/unsubscribed" : "/emails/unsubscribed"}`;
+  if (page === "email_unsubscribe_landing")
+    return `${SITE_URL}${lang === "id" ? "/id/emails/unsubscribe" : "/emails/unsubscribe"}`;
   if (page === "account_delete_completed")
     return `${SITE_URL}${lang === "id" ? "/id/account-delete/completed" : "/account-delete/completed"}`;
   if (page === "email_preferences")
     return `${SITE_URL}${lang === "id" ? "/id/account/email-preferences" : "/account/email-preferences"}`;
+  if (page === "docs") return `${SITE_URL}${lang === "id" ? "/id/docs" : "/docs"}`;
+  if (page === "docs_feature") {
+    const slug = getDocSlug();
+    return `${SITE_URL}${lang === "id" ? `/id/docs/${slug ?? ""}` : `/docs/${slug ?? ""}`}`;
+  }
   return `${SITE_URL}${lang === "id" ? "/id" : "/"}`;
 }
 
-function pagePathForLang(page: AnalyticsPage, lang: Lang, emailSlug: string | null) {
+function pagePathForLang(page: AnalyticsPage, lang: Lang, emailSlug: string | null, docSlug: string | null) {
   const id = lang === "id";
   if (page === "privacy") return id ? "/id/privacy" : "/privacy";
   if (page === "terms") return id ? "/id/terms" : "/terms";
   if (page === "email_confirmed") return id ? "/id/emails/confirmed" : "/emails/confirmed";
   if (page === "email_unsubscribed") return id ? "/id/emails/unsubscribed" : "/emails/unsubscribed";
+  if (page === "email_unsubscribe_landing") return id ? "/id/emails/unsubscribe" : "/emails/unsubscribe";
   if (page === "account_delete_completed") return id ? "/id/account-delete/completed" : "/account-delete/completed";
   if (page === "email_preferences") return id ? "/id/account/email-preferences" : "/account/email-preferences";
   if (page === "email" && emailSlug) return id ? `/id/emails/${emailSlug}` : `/emails/${emailSlug}`;
+  if (page === "docs") return id ? "/id/docs" : "/docs";
+  if (page === "docs_feature" && docSlug) return id ? `/id/docs/${docSlug}` : `/docs/${docSlug}`;
   return id ? "/id" : "/";
 }
 
 const workflowIcons = [CameraIcon, CheckListIcon, UsersIcon, WalletIcon];
 const featureIcons = [CameraIcon, EditIcon, UserPlusIcon, PieIcon, ChartIcon, ShieldIcon, GlobeIcon];
 const guideIcons = [CameraIcon, EditIcon, UsersIcon, WalletIcon];
-const screenComponents = [ScanScreen, ReviewScreen, SplitScreen, SettlementScreen];
 
 export default function App() {
   const [lang, setLang] = useState<Lang>(detectInitialLang);
   const [deleteOpen, setDeleteOpen] = useState(false);
   const page = getPage();
   const emailCampaign = page === "email" ? findEmailCampaign(getEmailSlug()) : undefined;
+  const docSlug = page === "docs_feature" ? getDocSlug() : null;
+  const docEntry = page === "docs_feature" ? findDoc(docSlug) : undefined;
   const t = content[lang];
 
   useEffect(() => {
@@ -141,19 +163,29 @@ export default function App() {
     const pageTitle =
       page === "email"
         ? `${emailText?.subject ?? "Email campaign"} - BagiStruk`
-        : pageMetaInfo
-          ? pageMetaInfo.title
-        : page !== "home"
-          ? `${legalContent[lang].title} - BagiStruk`
-          : meta[lang].title;
+        : page === "docs"
+          ? `${lang === "id" ? "Dokumentasi fitur" : "Feature documentation"} - BagiStruk`
+          : page === "docs_feature"
+            ? `${docEntry?.text[lang].title ?? docSlug ?? "Doc"} - BagiStruk`
+            : pageMetaInfo
+              ? pageMetaInfo.title
+              : page !== "home"
+                ? `${legalContent[lang].title} - BagiStruk`
+                : meta[lang].title;
     const pageDescription =
       page === "email"
         ? emailText?.preheader ?? "BagiStruk email campaign web version."
-        : pageMetaInfo
-          ? pageMetaInfo.description
-        : page !== "home"
-          ? legalContent[lang].intro
-          : meta[lang].description;
+        : page === "docs"
+          ? lang === "id"
+            ? "Dokumentasi semua fitur BagiStruk: scan, review, split, settlement, Plus, dan pengaturan."
+            : "Documentation for every BagiStruk feature: scan, review, split, settlement, Plus, and settings."
+          : page === "docs_feature"
+            ? docEntry?.text[lang].summary ?? "BagiStruk feature documentation."
+            : pageMetaInfo
+              ? pageMetaInfo.description
+              : page !== "home"
+                ? legalContent[lang].intro
+                : meta[lang].description;
     const canonicalUrl = getCanonicalUrl(page, lang);
     document.title = pageTitle;
 
@@ -196,7 +228,7 @@ export default function App() {
     setOg("og:url", canonicalUrl);
     setOg("og:image", OG_IMAGE_URL);
     setOg("og:locale", lang === "id" ? "id_ID" : "en_US");
-  }, [emailCampaign, lang, page]);
+  }, [docEntry, docSlug, emailCampaign, lang, page]);
 
   const changeLang = (next: Lang) => {
     setLang(next);
@@ -204,7 +236,8 @@ export default function App() {
       window.localStorage.setItem(STORAGE_KEY, next);
       const currentPage = getPage();
       const emailSlug = getEmailSlug();
-      const path = pagePathForLang(currentPage, next, emailSlug);
+      const docSlug = getDocSlug();
+      const path = pagePathForLang(currentPage, next, emailSlug, docSlug);
       const hash = window.location.hash;
       window.history.replaceState(null, "", path + hash);
     } catch {
@@ -213,7 +246,38 @@ export default function App() {
   };
 
   const scrollTo = (id: string) => {
-    if (page !== "home") {
+  if (page === "docs") {
+    return (
+      <>
+        <SimplePageChrome
+          lang={lang}
+          onChangeLang={changeLang}
+          onNav={trackAndScroll}
+          t={t}
+        >
+          <DocsIndexPage lang={lang} />
+        </SimplePageChrome>
+        <Analytics />
+      </>
+    );
+  }
+  if (page === "docs_feature") {
+    return (
+      <>
+        <SimplePageChrome
+          lang={lang}
+          onChangeLang={changeLang}
+          onNav={trackAndScroll}
+          t={t}
+        >
+          <DocDetailPage lang={lang} slug={docSlug ?? ""} />
+        </SimplePageChrome>
+        <Analytics />
+      </>
+    );
+  }
+
+  if (page !== "home") {
       window.location.href = `${lang === "id" ? "/id" : "/"}#${id}`;
       return;
     }
@@ -269,6 +333,19 @@ export default function App() {
             manageHref={manageHref}
           />
         </SimplePageChrome>
+        <Analytics />
+      </>
+    );
+  }
+  if (page === "email_unsubscribe_landing") {
+    return (
+      <>
+        <EmailUnsubscribeLandingPage
+          lang={lang}
+          onChangeLang={changeLang}
+          onNav={trackAndScroll}
+          t={t}
+        />
         <Analytics />
       </>
     );
@@ -450,6 +527,24 @@ export default function App() {
               );
             })}
           </div>
+          <div className="mt-8 text-center">
+            <a
+              href={lang === "id" ? "/id/docs" : "/docs"}
+              onClick={() =>
+                trackCtaClick({
+                  id: "features_explore_docs",
+                  label: t.nav.docs,
+                  lang,
+                  page,
+                  target: lang === "id" ? "/id/docs" : "/docs",
+                })
+              }
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-teal-600 bg-white px-6 py-3 text-sm font-semibold text-teal-700 transition hover:bg-teal-50 focus:outline-none focus:ring-2 focus:ring-teal-500/40"
+            >
+              {t.nav.docs}
+              <ArrowRightIcon className="h-4 w-4" />
+            </a>
+          </div>
         </Section>
 
         {/* USER GUIDE */}
@@ -509,13 +604,17 @@ export default function App() {
           subheading={t.screenshots.subheading}
         >
           <div className="grid grid-cols-2 gap-6 sm:gap-8 lg:grid-cols-4">
-            {screenComponents.map((Screen, i) => (
-              <figure key={i} className="flex flex-col items-center">
-                <PhoneMockup className="max-w-[200px]">
-                  <Screen />
-                </PhoneMockup>
+            {t.screenshots.items.map((item) => (
+              <figure key={item.src} className="flex flex-col items-center">
+                {/* TODO(screenshots): replace this SVG placeholder with a real app capture (PNG, portrait). */}
+                <img
+                  src={item.src}
+                  alt={item.caption}
+                  loading="lazy"
+                  className="w-full max-w-[200px] rounded-[1.8rem] border border-slate-200 bg-slate-50 shadow-sm"
+                />
                 <figcaption className="mt-4 text-center text-sm font-medium text-slate-600">
-                  {t.screenshots.captions[i]}
+                  {item.caption}
                 </figcaption>
               </figure>
             ))}
@@ -634,6 +733,23 @@ export default function App() {
                   >
                     {t.nav.guide}
                   </button>
+                </li>
+                <li>
+                  <a
+                    href={lang === "id" ? "/id/docs" : "/docs"}
+                    onClick={() =>
+                      trackCtaClick({
+                        id: "footer_docs",
+                        label: t.nav.docs,
+                        lang,
+                        page,
+                        target: lang === "id" ? "/id/docs" : "/docs",
+                      })
+                    }
+                    className="hover:text-white"
+                  >
+                    {t.nav.docs}
+                  </a>
                 </li>
                 <li>
                   <button
@@ -881,6 +997,79 @@ function StoreLink({
     >
       {label}
     </a>
+  );
+}
+
+// Landing page shown when a user clicks the unsubscribe link in a marketing
+// email. The link only ever exposes the landing-page URL; the actual
+// unsubscribe runs server-side in the Vercel BFF (`/api/unsubscribe`) with
+// the service-role key, then redirects here with the outcome.
+function EmailUnsubscribeLandingPage({
+  lang,
+  onChangeLang,
+  onNav,
+  t,
+}: {
+  lang: Lang;
+  onChangeLang: (l: Lang) => void;
+  onNav: (id: string, eventId: string, label: string) => void;
+  t: (typeof content)[Lang];
+}) {
+  const [status, setStatus] = useState<"processing" | "error">("processing");
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get("token") ?? "";
+    const langPath = lang === "id" ? "/id" : "";
+    if (!token) {
+      window.location.replace(`${langPath}/emails/unsubscribed?outcome=unknown`);
+      return;
+    }
+    fetch(`/api/unsubscribe?token=${encodeURIComponent(token)}&lang=${lang}`, {
+      redirect: "follow",
+    })
+      .then(async (res) => {
+        const finalUrl = res.url;
+        const outcome = new URL(finalUrl).searchParams.get("outcome") ?? "success";
+        window.location.replace(`${langPath}/emails/unsubscribed?outcome=${outcome}`);
+      })
+      .catch(() => {
+        setStatus("error");
+      });
+  }, [lang]);
+
+  const homeHref = lang === "id" ? "/id" : "/";
+
+  return (
+    <div className="min-h-screen bg-white text-slate-900 antialiased">
+      <Header lang={lang} onChangeLang={onChangeLang} onNav={onNav} t={t} />
+      <main className="mx-auto max-w-3xl px-5 py-16 sm:py-24">
+        {status === "error" ? (
+          <>
+            <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+              {lang === "id"
+                ? "Terjadi kesalahan saat berhenti berlangganan"
+                : "Something went wrong while unsubscribing"}
+            </h1>
+            <p className="mt-4 text-base leading-7 text-slate-600">
+              {lang === "id"
+                ? "Silakan coba lagi, atau kelola preferensi email dari aplikasi BagiStruk (Settings > Promotional emails)."
+                : "Please try again, or manage email preferences from the BagiStruk app (Settings > Promotional emails)."}
+            </p>
+            <a
+              href={homeHref}
+              className="mt-8 inline-flex items-center justify-center gap-2 rounded-xl bg-teal-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-700"
+            >
+              {lang === "id" ? "Kembali ke beranda" : "Back to home"}
+            </a>
+          </>
+        ) : (
+          <p className="text-sm text-slate-500">
+            {lang === "id" ? "Memproses…" : "Processing…"}
+          </p>
+        )}
+      </main>
+    </div>
   );
 }
 
@@ -1203,6 +1392,12 @@ function Header({
           >
             {t.nav.guide}
           </button>
+          <a
+            href={lang === "id" ? "/id/docs" : "/docs"}
+            className="hover:text-slate-900"
+          >
+            {t.nav.docs}
+          </a>
           <button
             onClick={() => onNav("screenshots", "nav_screenshots", t.nav.screenshots)}
             className="hover:text-slate-900"
